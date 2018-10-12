@@ -1,0 +1,30 @@
+
+Uploading IntelliJ IDEA Project to GitHub
+
+Steps: 
+
+In IntelliJ IDEA menu: VCS -> Import into Version Control -> Create Git Repository
+In pop up window select your project and click ok.
+Commit all necessary files to you local branch master
+Open Git Bash and navigate to project folder e.g cd "D:\projects\TestProject"
+In Git Bash: git remote add origin http//IP/path/to/repository
+In Git Bash: git push origin master
+In IntelliJ IDEA right-click on project select Synchronize 'TestProject'
+In IntelliJ IDEA right-click on project select Git -> Repository -> Branches -> origin/master -> Checkout as new local branch
+
+URL Reference
+
+https://coderwall.com/p/gkyqmg/intellij-idea-how-to-upload-project-to-remote-branch
+
+Command for Setting up http-proxy for GIT Hub in Git Bash
+
+git config --global http.proxy http://pradeep-kodavoor:Sept@2018@proxy.cognizant.com:6050
+
+URL References: 
+https://rip747.wordpress.com/2008/09/12/git-clone-over-http-who-knew/
+https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github
+
+
+git config --global http.sslVerify false
+
+
