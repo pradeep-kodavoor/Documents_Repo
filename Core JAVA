@@ -1,0 +1,11 @@
+Heap Memory - Will store the objects
+Stack Memory - Will store the variables
+
+Primitive variable - will have variable values
+Reference variable - will have reference to the memory location
+
+Comparison of reference variable compares its memory location not the values of instance variables.
+
+String Class 
+
+
