@@ -1,0 +1,3 @@
+Avoid using increment or decrement operators in condition checks.
+Always enclose a statements with curly braces. Even if there is a single statement.
+Minimize use of break and continue statements inside loop.
