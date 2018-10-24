@@ -6,6 +6,20 @@ Reference variable - will have reference to the memory location
 
 Comparison of reference variable compares its memory location not the values of instance variables.
 
-String Class 
+String - Immutable
+Once created, value cannot be changed in the memory location.
+
+Variable Arguments. Takes any number inputs to a method. Introduced in JDK 5
+Syntax : sum (int... marks) 
+Sample method call: sum(2,3) sum(2,3,5)
+
+Variable argument should always be last arugment inside a method.
+Ex: sum(int length,int... num ) - Correct
+Ex: sum(int... num, int length) - Wrong
+
+Arrays:
+int[] intArray = new int[5];
+intArray = {1,2,3};
+int[] newArray = {5,6,7}
 
 
