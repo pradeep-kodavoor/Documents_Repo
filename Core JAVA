@@ -22,4 +22,13 @@ int[] intArray = new int[5];
 intArray = {1,2,3};
 int[] newArray = {5,6,7}
 
+Object Oriented Programming
 
+Composition : Has-a relationship. Ex: Person has a Adress, Book has a Review, 
+Inheritance : Is-a relationship. Ex: Student is a Person, Ferrari is a Car. 
+Sub-class inherits all the state and behavior of the parent class.
+
+Method Overriding - Overriding the implementation provided in the super class with new implementation.
+
+super - Keyword to access state and behavior of parent class
+this - keyword to access state and behavior of current class
