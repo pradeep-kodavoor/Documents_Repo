@@ -32,3 +32,16 @@ Method Overriding - Overriding the implementation provided in the super class wi
 
 super - Keyword to access state and behavior of parent class
 this - keyword to access state and behavior of current class
+
+MultiThreading
+
+2 wasy of creating thread
+ - Extend Thread class
+ - Implement Runnable Interface and pass the object to Thread class constructor
+
+Executor Service - For creating multiple threads in a simpler ways and manage the size of thread pool
+execute() - For invoking a normal task
+
+Callable Thread - task which returns some value
+submit(Callable task) -> Executes single callable task
+invokeAll(Collection of Callable tasks) -> Executes multiple callable task at a time
