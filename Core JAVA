@@ -72,5 +72,21 @@ class NullPointerException extends RuntimeException
  - Any class that extends Runtime Exception
  - Not mandatory of handling the exception
  
+ Functional Programming
+ 
+ Stream - source of objects 
+ 
+ 2 Operations on stream
+  - Intermediate operation - 
+    Input -> Stream
+    Output -> Stream
+    Ex: filter(), sorted(), distinct() 
+    Stream can have multiple Intermediate Operations
+    
+  - Terminal operation 
+    Input -> Stream  
+    Single output 
+    Ex: min(), max(), forEach(), reduce(), collect()
+ 
 
  
