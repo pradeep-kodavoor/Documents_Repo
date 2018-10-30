@@ -45,3 +45,32 @@ execute() - For invoking a normal task
 Callable Thread - task which returns some value
 submit(Callable task) -> Executes single callable task
 invokeAll(Collection of Callable tasks) -> Executes multiple callable task at a time
+
+Exception Handling
+
+Finally block - 
+ - Executes even if exception is raised
+ - Even if return statement is present
+ - Will not be executed if lines inside finally throws exception
+ - If JVM crashes (System.exit(0)) - DO NOT TRY
+
+2 types of Exceptions
+- Sub-classes of Runtime Exceptions
+- Not a Sub-class of Runtime Exceptions (All classes that extends Exceptions and not Runtime Exceptions)
+
+class Error extends Throwable
+
+class Exception extends Throwable
+class InterruptedException extends Exception 
+ - Checked Exception 
+ - Any class that extends Exception 
+ - Should be handled always by throwing or surrounding by try/catch 
+
+class RuntimeException extends Exception
+class NullPointerException extends RuntimeException 
+ - Un-Checked Exception 
+ - Any class that extends Runtime Exception
+ - Not mandatory of handling the exception
+ 
+
+ 
