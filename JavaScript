@@ -1,0 +1,27 @@
+Dynamically Typed Language
+
+Primitive Data Types
+  - String, Number and Boolean
+ 
+ Data Type of the variable is determined at runtime based on the value it contains.
+ 
+ String - decalred by "" and '' 16bits space
+ var a ="Hello"
+ var b = 'World'
+ 
+ Number 64bits space - stores all the numbers
+ 
+ Boolean - true, false
+ 
+ Undefined null 0 Nan
+ 
+ Operators
+ 
+ == -> Compares values
+ === -> Compares values and type
+ 
+ Ex: var x="20", y =20;
+ (x==y) -> true
+ (x===y) -> false
+ 
+ Function should always have return type
