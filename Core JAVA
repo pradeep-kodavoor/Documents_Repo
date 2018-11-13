@@ -87,6 +87,14 @@ class NullPointerException extends RuntimeException
     Input -> Stream  
     Single output 
     Ex: min(), max(), forEach(), reduce(), collect()
+    
+ Concurrent Collection
+   Concurrent collections provide Thread safe without significant performance impact in specific scenarios.
+ Concurrent HashMap 
+   Complete HashMap is not locked, instead few regions are locked, thus improved performance and thread safe.
+   
+   
+   
  
 
  
