@@ -115,6 +115,11 @@ class NullPointerException extends RuntimeException
   
   Declaring constants : public static final int PI = 3.14;
    
- 
+Nested Class
+    - Default Nested Class - Requires outer class reference for instantiating. InnerClass innerClass = nestedClassRunner.new InnerClass();
+    - Static Nested Class - Can be instantiated directly. StaticNestedClass staticNestedClass = new StaticNestedClass();
 
+Anonymous class 
+   - Inner class without a name. 
+   - Can be created by implementing an Interface or by extending a Class
  
