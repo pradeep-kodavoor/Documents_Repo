@@ -5,3 +5,9 @@ Web Application Request Flow
   - Web server responds with HTTP Response to the browser
   - Code in Web Server => Input: HttpRequest , Output: HttpResonse
   
+Actions in CDI (Context Dependency Injection)
+  - Package and Deploy Components
+  - Bean Manager discovers the Beans
+  - Spot the dependencies
+  - Inject the dependencies
+  
