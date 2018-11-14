@@ -1,0 +1,7 @@
+Servlet - A very simple JAVA class which can take a request in and gives response back.
+
+Web Application Request Flow
+  - Browser sends HTTP Request to web server
+  - Web server responds with HTTP Response to the browser
+  - Code in Web Server => Input: HttpRequest , Output: HttpResonse
+  
