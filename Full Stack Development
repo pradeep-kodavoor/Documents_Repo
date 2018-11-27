@@ -1,0 +1,75 @@
+Angular
+
+EcmaScript is a Standard for JavaScript
+
+TypeScript - JavaScript + Strong typing
+
+Declaring variable types and method types.
+
+Command to update Node Version (g - for global update)
+npm i npm -g
+
+npm - Node Package Manager similar to Maven
+Downloads all the dependencies required for the project
+
+npm install 
+- downloads all the dependencies specified in package.json file and places it in node_modules folder
+- Will be executed internally when ng new is executed
+
+Command for installing Angular CLI
+install -g @angular/cli@7.0.3
+
+Few ng options
+
+Checking installed Angular CLI version
+ng version
+
+Creating new Angular Project with basic structure
+ng new Angular-Front-End
+
+Compile, Build and serve the app
+ng serve 
+
+List all the ng options
+ng help
+
+Check if newly written code meets the standard
+ng lint
+tslint.json - File with all the standards, we can modify it as per our requirements if required!
+
+ng build
+Creates dist folder with Runtime Files which can be deployed in a web server
+
+ng test
+For executing unit tests
+Unit tests are written using Framework - Jasmine
+We will be running it using - Karma
+
+ng e2e
+For performing E2E test
+Protractor - Layer of Selenium Framework is used for testing E2E.
+
+src Folder
+app - All angular codes. Ex:  Project components and modules
+assets - Contents that has to be rendered as it is ex: images
+environments - Deployment environment related configurations
+
+polyfills.ts - Makes sure app is compatible across all the browsers
+styles.css - Global Style Sheet
+test.ts - Starting point for Unit Test
+tsconfig.json - Specifies how TypeScript code has to be converted to JavaScript code
+
+Components
+
+Entire page is divided into components. Ex: Menu component, Header Component, Footer Component
+Each Component has
+  Template test.component.html - How elements should be displayed
+  Style test.component.css - How elements should be styled
+  Code test.component.ts - How actions has to be handled
+
+Component is identified by decorator - similar to annotation in Java 
+@Component({
+  selector: 'app-root',   -- HTML tag that represents the component
+  templateUrl: './app.component.html', --HTML file to be displayed
+  styleUrls: ['./app.component.css']
+})
