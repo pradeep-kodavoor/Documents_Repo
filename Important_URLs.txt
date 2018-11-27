@@ -33,5 +33,27 @@ and copy&paste the path that you get it from the top into your computer environm
 Click Ok and reopen your cmd window, type in ng version
 
 URL Reference : 
-
 https://stackoverflow.com/questions/37991556/ng-is-not-recognized-as-an-internal-or-external-command
+
+Steps for uploading Visual Studio Code Project to GitHub
+
+Execute below comands in the terminal
+Create a local Repo -> git init
+Commit files to local Repo -> git commit -m"Your comment"
+Map remote repo to local repo -> git remote add origin <Link to GitHub Repo> 
+Verify the link to remote repo -> git remote -v
+Push the committed changes to remote repo -> git push -u origin master
+Prompts for password, while pushing for the first time. Enter GitHub Cr3d3ntials
+
+URL Reference:
+https://stackoverflow.com/questions/46877667/how-to-push-a-new-initial-project-to-github-using-vs-code
+
+Issues while uploading code from Visual Studio Code to GitHub repository
+
+Failed to connect to github.com port 443: Connection refused
+
+Setup the proxy using terminal of Visual Studio Code
+git config --global http.proxy http[s]://userName:password@proxyaddress:port
+
+URL Reference :
+https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github
