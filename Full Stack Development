@@ -59,7 +59,7 @@ styles.css - Global Style Sheet
 test.ts - Starting point for Unit Test
 tsconfig.json - Specifies how TypeScript code has to be converted to JavaScript code
 
-Components
+Component
 
 Entire page is divided into components. Ex: Menu component, Header Component, Footer Component
 Each Component has
@@ -68,8 +68,69 @@ Each Component has
   Code test.component.ts - How actions has to be handled
 
 Component is identified by decorator - similar to annotation in Java 
+We are passing an object with values of member variables as input.
 @Component({
   selector: 'app-root',   -- HTML tag that represents the component
   templateUrl: './app.component.html', --HTML file to be displayed
   styleUrls: ['./app.component.css']
 })
+
+Class in TypeScript
+
+All classes in a file in whole is termed as module
+
+Definition: export class classname
+export - similar to public keyword, If we need to use a class outside the module
+
+constructor() {} - similar to public A() of Java. Constructor name is always constructor().
+
+ngOnInit : void {} - Method declaration, void - return type (optional), ngOnInit - method name
+
+message : string = 'Hello World!' - Variable declaration, string - variable type (optional), message - variable name
+Based on the value assigned, type is determined if it is not specified.
+
+ng generate component login - Creates Login Component with HTML , CSS and TypeScript files
+
+Data binding
+
+Declare member variable in the component.ts and define it in the input tag 
+Interpolation: Binding member variable to tag - Data is fetched from component
+<input type="text" name="username" value= {{username}}>
+
+Event binding - User action is mapped to a method in a component
+<button (click)=handleLogin()>Login</button>
+
+2 Way data binding using banana in a box model- [()] - Data would be fetched from component and set to component as well
+<input type="text" name="username"  [(ngModel)] = "username">
+
+Routing - Similar to Redirecting/Forwarding a request.
+
+Path has to be set in app-routing.module.ts file.
+Ex:  const routes: Routes = [{path:'login' , component: LoginComponent}]
+
+Path can be used in a component for routing to any other component of choice.
+
+{path:'**', component: ErrorComponent} -> Matches all the paths, Should be last parameter in the array always
+
+router:Router, this.router.navigate(['welcome',this.username]) -> TypeScript snip for routing to welcome component
+
+<a routerLink="/todos">here</a> -> HTML tag for routing to todos component
+
+route:ActivatedRoute, this.route.snapshot.params['name'] -> TypeScript snip for fetching the parameters present in the activated route
+
+ng Attributes
+
+*ngIf -> Similar to Conditional Statement IF , Validates the expression and determines whether to display or not.
+Ex: <small *ngIf = "invalidLogin">{{errorMessage}}</small>
+
+*ngFor -> Similar to forEach loop, Used for iterating through the list of objects
+Ex: <tr *ngFor="let todo of todos"> -> Here 'let' and 'of' are keywords
+
+Convert a field from one format to another using pipe symbol (|)
+Ex. todo.targetDate | date -> Converts targetDate to simple date format
+Ex. todo.targetDate | date | uppercase -> Converts targetDate to simple date format and then it converts it into upper case
+
+
+
+
+
