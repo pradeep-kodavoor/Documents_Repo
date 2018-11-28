@@ -104,6 +104,7 @@ Event binding - User action is mapped to a method in a component
 <input type="text" name="username"  [(ngModel)] = "username">
 
 Routing - Similar to Redirecting/Forwarding a request.
+Used for routing from one component to another
 
 Path has to be set in app-routing.module.ts file.
 Ex:  const routes: Routes = [{path:'login' , component: LoginComponent}]
@@ -130,7 +131,33 @@ Convert a field from one format to another using pipe symbol (|)
 Ex. todo.targetDate | date -> Converts targetDate to simple date format
 Ex. todo.targetDate | date | uppercase -> Converts targetDate to simple date format and then it converts it into upper case
 
+Angular Module - is a group of components or directives which are dedicated for a specific purpose
 
+Angular Module vs JavaScript Module 
+Angular Module is used to group different Angular Components, they can be in separate files
+JavaScript Module is a group of classes and function in a single file
 
+Bootstrap - Module which is boot strapped is called as Root Module. First component that loads when index.html is loaded.
+
+Angular Application is built up using Angular Module - Set of Angular Components.
+Every Component should be associated with Module
+
+Web Service
+
+Service delivered over web.
+W3C Definition: Software system designed to support interoperable machine-to-machine interactions over a network
+
+Request - Input to the web service
+Response - Output the web service
+Message Exchange Format - Format of Request and Response Ex: JSON, XML
+Service Provider - Hosts the web service
+Service Consumer - Consumes the web service
+Service Definition - Contract between Service provider and consumer
+  Defines format of Request and Response
+  Structure of Request and Response
+  Where service is available - End Point
+Transport - How service is called, either over internet or through a queue
+
+REST - REpresentation State Transfer
 
 
