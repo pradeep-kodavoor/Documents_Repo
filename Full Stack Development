@@ -175,4 +175,23 @@ ResponseEntity - When we need to respond with specific status
 Request Body  
 For retrieving contents from Request Body , Default Constructor is mandatory.
 
+REST Web Service Best Practices
 
+Consumer First - Think from the perspective of the consumer while defining URI
+
+Use right method based on the action
+
+Use proper response Status
+200 - SUCCESS
+404 - RESOURCE NOT FOUND
+400 - BAD REQUEST
+201 - CREATED - When resource is created
+401 - UNAUTHORIZED
+500 - SERVER ERROR
+
+Make sure no secure info is sent in URI
+
+URI - always use Plural
+/users/1
+
+Resources should be nouns
