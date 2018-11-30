@@ -103,6 +103,10 @@ Event binding - User action is mapped to a method in a component
 2 Way data binding using banana in a box model- [()] - Data would be fetched from component and set to component as well
 <input type="text" name="username"  [(ngModel)] = "username">
 
+We can perform event binding as well as Property Binding splitting it
+Ex: [ngModel]="todo.targetDate | date:'yyyy-MM-dd'" - Binding property
+(ngModelChange)="todo.targetDate = $event" - Binding Event
+
 Routing - Similar to Redirecting/Forwarding a request.
 Used for routing from one component to another
 
@@ -159,5 +163,16 @@ Service Definition - Contract between Service provider and consumer
 Transport - How service is called, either over internet or through a queue
 
 REST - REpresentation State Transfer
+
+Method Standards
+GET -> For Getting the data
+DELETE -> For Deleting the data -> Response should be status of Deletion
+PUT -> For Updating the data
+POST -> For Creating new data -> Response should be Location of created resource
+
+ResponseEntity - When we need to respond with specific status
+
+Request Body  
+For retrieving contents from Request Body , Default Constructor is mandatory.
 
 
