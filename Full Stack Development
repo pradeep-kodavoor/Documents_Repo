@@ -195,3 +195,65 @@ URI - always use Plural
 /users/1
 
 Resources should be nouns
+
+Basic Authentication and Spring Security
+
+REST services can be hit through any browser and get the data from server, So we need to secure the REST services
+
+spring-boot-starter-security -> Adds security to the REST services
+
+Default password will be printed in logs.
+For setting username & password  update below fields in property file.
+spring.security.user.name=pradeep
+spring.security.user.password=dummy
+
+2 types of Authentication
+- Basic Authentication 
+  - We send Basic Authorization Header which represents Username and Password
+  - We send this header as part of every request
+- Form Based Authentication 
+  - Based on session on the browser 
+  - Needs an additional session at server
+  
+  Basic Authentication Header Format 
+  let basicAuthHeadStr = 'Basic ' + window.btoa(username +':'+ password) 
+  Note: there is a space after Basic.
+  
+  window.btoa -> Encodes a string to Base64 format.
+  - Creating header
+  let headers = new HttpHeaders({ 
+      Authorization:basicAuthHeadStr
+      })
+  
+  When Authorization Header is added to the request header, A pre-flight request would be triggered prior to the actual request with Method:OPTIONS to check if we have right permissions
+  
+  WebSecurityConfigurerAdapter - Class containing default Security Configuration for Spring
+  We need to override the methods to change the configuration
+  
+  CSRF - Will force POST and PUT request to have CSRF token 
+  
+  Overriding Configure Method
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+		System.out.println("Overridng Spring Security Configuration!!");
+		http
+			.csrf().disable() // Disable CSRF token
+			.authorizeRequests()
+				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll() //Any Request with OPTIONS permit all
+				.anyRequest().authenticated() //Rest of the request authorise
+				.and()
+				// .formLogin().and()
+				.httpBasic();
+	}
+  
+  HttpIntercepter - For adding Header to all the request, Acts like a filter
+  Provide implementation for configure method: 
+  intercept(request: HttpRequest<any>, next: HttpHandler){
+    let basicAuthHeadStr = 'Basic ' + window.btoa(username +':'+ password)
+    request = request.clone({
+      setHeaders : { Authorization:basicAuthHeadStr }
+    });
+    return next.handle(request)
+  }
+
+
