@@ -211,6 +211,7 @@ spring.security.user.password=dummy
 - Basic Authentication 
   - We send Basic Authorization Header which represents Username and Password
   - We send this header as part of every request
+  - No expiration time. Hence not secure.
 - Form Based Authentication 
   - Based on session on the browser 
   - Needs an additional session at server
@@ -256,4 +257,10 @@ spring.security.user.password=dummy
     return next.handle(request)
   }
 
+Custome Token System - Had some flaws. JWT evolved.
+JWT - JSON Web Token - Open Industry Standard RFC7519 method for representing claims securely between 2 parties 
+JWT Token has
+	- Header - Algorithm names and type Ex: HS512
+	- Payload - Few pre-defined elements like role of the user, creation time of user etc
+	- Signature - Base64 Header and Payload and in addition to that a secret string.
 
