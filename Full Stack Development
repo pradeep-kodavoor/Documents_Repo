@@ -264,3 +264,16 @@ JWT Token has
 	- Payload - Few pre-defined elements like role of the user, creation time of user etc
 	- Signature - Base64 Header and Payload and in addition to that a secret string.
 
+Getting JWT Token 
+	- POST Request to http://localhost:8080/authenticate 
+	- Request Body : { "username": "in28minutes", "password": "dummy" }
+	- Response : {token : token_value}
+	
+Refreshing a JWT Token - Increasing the expiration time
+	- GET Request to http://localhost:8080/refresh
+	- With Authorization Header : {Authorization: "Bearer token_value"}
+
+Not REST Service call
+	- Should be made by adding Authorization Header in the request headers
+	
+	
