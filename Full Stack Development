@@ -286,3 +286,15 @@ Few Annotations from JPA
 	- @Table -> For specifying the table name, By default class would be considered
 	- @Column -> For specifying the column name, By default instance variable name would be considered
 
+H2 - In-Memory Database which can be embedded with spring boot project
+Can be used for development purpose. Data would be lost once the server is restarted.
+
+<dependency>
+<groupId>com.h2database</groupId>
+<artifactId>h2</artifactId>
+<scope>runtime</scope>
+</dependency>
+
+Console URL :http://localhost:8080/h2-console
+Default JDBC URL : jdbc:h2:mem:testdb
+
