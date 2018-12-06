@@ -276,4 +276,13 @@ Refreshing a JWT Token - Increasing the expiration time
 Not REST Service call
 	- Should be made by adding Authorization Header in the request headers
 	
-	
+JPA - Java Persistence API - Interface/Specification provided by JAVA for performing database operations
+Hibernate - Framework which implements JPA Interface.
+
+Few Annotations from JPA
+	- @Entity -> Creates the table in Database with name of the Bean by default
+	- @Id -> Marks the field as Primary Key for the table
+	- @GeneratedValue -> Auto-increments the Primary Key Value on new record insertion
+	- @Table -> For specifying the table name, By default class would be considered
+	- @Column -> For specifying the column name, By default instance variable name would be considered
+
