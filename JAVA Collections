@@ -1,0 +1,29 @@
+Collection Interfaces
+  - List
+  - Set 
+  - Queue
+  - Map
+
+List 
+  - Cares about which position each object is in
+  - Elements can be added in by specifying position - where should it be added in
+  - If element is added without specifying position - it is added at the end
+  - Allows duplicate elements
+  
+List.of - creates a immutable list - We cannot add more elements
+
+List<String> list = List.of("Cat","Bat");
+list.add("Dog") - Throws an exception, since list is immutable when created by List.of().
+
+Vector
+ - All methods are synchronized, Thread Safe
+ - Basic Data Structure : Array
+ArrayList
+ - Not Synchronized, Not Thread Safe
+ - Basic Data Structure : Array
+ - Insertion and Deletion are slower compared to Linked List
+ - Constant access time
+Linked List
+ - Basic Data Structure : Doubly Linked List
+ - Iteration is slow, Access time is slow
+ - Faster insertion and deletion
