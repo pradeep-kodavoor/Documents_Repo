@@ -9,6 +9,7 @@ List
   - Elements can be added in by specifying position - where should it be added in
   - If element is added without specifying position - it is added at the end
   - Allows duplicate elements
+  - Index starts from 0
   
 List.of - creates a immutable list - We cannot add more elements
 
@@ -18,6 +19,7 @@ list.add("Dog") - Throws an exception, since list is immutable when created by L
 Vector
  - All methods are synchronized, Thread Safe
  - Basic Data Structure : Array
+ - Constant access time
 ArrayList
  - Not Synchronized, Not Thread Safe
  - Basic Data Structure : Array
@@ -27,3 +29,22 @@ Linked List
  - Basic Data Structure : Doubly Linked List
  - Iteration is slow, Access time is slow
  - Faster insertion and deletion
+
+Few important methods of List implementation
+
+add(element) -> Adds element to end of list
+add(position, element) -> Adds element at specified position
+addAll(Collection) -> Adds collection of elements to a list
+set(position,newValue) -> Updates the value present at specified position
+remove(position) -> Element at specified position is removed
+remove(element) -> Specified element is removed
+
+Note: while removing an Integer element from list, new Integer object has to be passed.
+
+Ex: List<Integer> numbers = List.of(101,102,103,104);
+List<Integer> numberList = new ArrayList<>(numbers);
+numberList.remove(102) -> Throws ArrayIndexOutOfBoundException, since by default it is considered as index value.
+numberList.remover(Integer.valueOf(102)) -> Correct way to remove an Integer object from the list.
+
+For removing an element from the list Iterator has to be used.
+
