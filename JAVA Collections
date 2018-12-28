@@ -4,7 +4,7 @@ Collection Interfaces
   - Queue
   - Map
 
-List 
+List Interface
   - Cares about which position each object is in
   - Elements can be added in by specifying position - where should it be added in
   - If element is added without specifying position - it is added at the end
@@ -47,4 +47,11 @@ numberList.remove(102) -> Throws ArrayIndexOutOfBoundException, since by default
 numberList.remover(Integer.valueOf(102)) -> Correct way to remove an Integer object from the list.
 
 For removing an element from the list Iterator has to be used.
+
+Set Interface
+  - Unique elements, Duplicates are not allowed
+  - Positional access is not allowed, Adding or removing based on Index is not possible.
+  
+ 
+  
 
