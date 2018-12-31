@@ -51,7 +51,30 @@ For removing an element from the list Iterator has to be used.
 Set Interface
   - Unique elements, Duplicates are not allowed
   - Positional access is not allowed, Adding or removing based on Index is not possible.
-  
- 
-  
 
+Hash Table
+  - Hash value is calculated based on the Hashing Function and value is stored in the corresponding bucket.
+  - Effeciency of Hash Table depends on Hashing Function implemented in hashCode method.
+
+HashSet
+  - Elements will not be stored in Insertion Order
+
+LinkedHashSet
+  - Elements will be stored in Insertion Order
+ 
+TreeSet
+  - Elements will be stored in Sorted Order
+
+TreeSet implements NavigableSet
+  - floor(number) -> returns a number which less than or equal to specified number
+  
+Queue implements Collection
+  - Arranged in the order of processing
+  
+PriorityQueue
+ - Elements are stored in natural order
+ - offer(element) - adds an element to a queue
+ - add(element) - calls offer(element) method to add an element to a queue
+ - addAll(Collection) - adds collection of elements
+ - poll() - removes first element from the queue
+ 
