@@ -59,6 +59,24 @@ Hash Table
 HashSet
   - Elements will not be stored in Insertion Order
 
+Internal Implementation
+
+private transient HashMap<E,Object> map;
+    
+// Dummy value to associate with an Object in the backing Map
+    
+private static final Object PRESENT = new Object();
+
+- HashMap is created internally during creation of HashSet
+public HashSet() {
+        map = new HashMap<>();
+    }
+  
+- When an element is added to HashSet, it is internally added to HashMap as key with dummy object(PRESENT) as value
+public boolean add(E e) {
+        return map.put(e, PRESENT)==null;
+    }
+
 LinkedHashSet
   - Elements will be stored in Insertion Order
  
@@ -78,3 +96,11 @@ PriorityQueue
  - addAll(Collection) - adds collection of elements
  - poll() - removes first element from the queue
  
+Internal Implementation of HashMap
+ 
+hashCode() function of Object Class, which returns an integer value is referred as Hash function.
+Hash value is the int value returned by the Hash function
+
+Bucket is used to store Key Value Pairs.
+Default implementation of bukcet is LinkedList, On exceeding limit it turns into RedBlack Tree for enabling faster traversal
+
