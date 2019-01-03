@@ -119,3 +119,39 @@ Thus achieving a performance of O(logn) instead og O(n)
 TREEIFY_THRESHOLD - Limit for converting Linked List to Tree - Default Value - 8
 UNTREEIFY_THRESHOLD - Limit for converting Tree to Linked List - Default Value - 6
 MIN_TREEIFY_CAPACITY - Limit for converting Tree to Linked List - Default Value - 64
+
+HashMap
+  - Unordered,unsorted
+  - Can have one null key
+
+HashTable
+  - Synchronized, Thread safe
+  - Unordered, unsorted
+  - Cannot have a null key
+
+LinkedHashMap
+  - Maintains insertion order
+  - Iteration is faster
+  - Insertion and Deletion is slower
+
+TreeMap
+  - implements NavigableMap, Map
+  - Elements are sorted and stored
+  
+Important common methods of Map 
+
+get(key) -> returns value against the key
+size() -> returns size of map
+isEmpty() -> checks if map is empty
+containsKey(key) -> checks if key is present in map
+containsValue(value) -> checks if value is present in map
+keySet() -> Returns Set of Keys present in map
+
+put(key,value) -> inserts a key value entry to a map.
+Note: If key is already present, its value will be replaced with new value
+
+entrySet() -> returns set of Entries(Key Value Pair) present in the map
+
+HashMap is efficient compared to LinkedHashMap and TreeMap since it doesn't store in any order.
+
+
