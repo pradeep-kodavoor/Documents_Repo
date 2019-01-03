@@ -104,3 +104,18 @@ Hash value is the int value returned by the Hash function
 Bucket is used to store Key Value Pairs.
 Default implementation of bukcet is LinkedList, On exceeding limit it turns into RedBlack Tree for enabling faster traversal
 
+Methods of HashMap : 
+Public  V get(Object key) {
+  if (key == null)
+    //some code
+  int hash = hash(key.hashCode()); 
+  //if key is found in Hash Table return value else return null
+ 
+}
+
+Performance of HashMap reduces as Hash Collisions increase and when size of Linked List Increases. O(1) gradually becomes O(n)
+For preventing this, In JAVA 8 a limit is set for the Linked List, when limit is crossed Linked List is converted to a Tree
+Thus achieving a performance of O(logn) instead og O(n)
+TREEIFY_THRESHOLD - Limit for converting Linked List to Tree - Default Value - 8
+UNTREEIFY_THRESHOLD - Limit for converting Tree to Linked List - Default Value - 6
+MIN_TREEIFY_CAPACITY - Limit for converting Tree to Linked List - Default Value - 64
