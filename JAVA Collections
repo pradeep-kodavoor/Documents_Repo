@@ -154,4 +154,11 @@ entrySet() -> returns set of Entries(Key Value Pair) present in the map
 
 HashMap is efficient compared to LinkedHashMap and TreeMap since it doesn't store in any order.
 
+Tips on Collection
+
+Hash - Unordered, unsorted
+Link - Insertion order is maintained
+Tree - Data is stored in a sorted order, Implements NavigableSet or NavigableMap
+
+
 
