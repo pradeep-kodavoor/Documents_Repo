@@ -1,0 +1,12 @@
+Lambda Expression - A method that doesn't need a access modifier, name or return value declaration. It takes input and returns result.
+
+3 parts of Lambda - 
+Parameter List - Can have zero or more parameters
+Arrow operator - Separates Parameter list and body
+Body - Piece of code that we are supposed to execute. Braces are optional
+
+Ex: Arrays.asList("A","B","C").forEach(element->System.out.println(element))
+
+Return Type of Lambda Expression is a Functional interface.
+
+Functional Interface - Interface with only one abstract method.
