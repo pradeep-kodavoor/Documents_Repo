@@ -10,3 +10,16 @@ Ex: Arrays.asList("A","B","C").forEach(element->System.out.println(element))
 Return Type of Lambda Expression is a Functional interface.
 
 Functional Interface - Interface with only one abstract method.
+
+Uses of Stream API
+
+Helps using data in a declarative way. We can use functions like max min without iterating completetly.
+Pipelines of data operations can be executed in parallel or in sequence.
+Support for group by, order by operations etc
+Functional Programming
+Paralle processing of data
+
+Intermediate vs Terminal Operation
+
+
+
