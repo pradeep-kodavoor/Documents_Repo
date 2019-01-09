@@ -123,3 +123,17 @@ Anonymous class
    - Inner class without a name. 
    - Can be created by implementing an Interface or by extending a Class
  
+
+Serialization
+Why unique ID
+
+JIT Compiler Internal Implementation
+
+Overloading Overriding
+
+Marker Interface
+
+AutoCloseable Interface
+
+
+
