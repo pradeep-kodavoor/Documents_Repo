@@ -1,0 +1,34 @@
+JPA - Java Persistence API - Interface/Specification provided by JAVA for performing database operations
+Hibernate - Framework which implements JPA Interface.
+
+Few Annotations from JPA
+	- @Entity -> Creates the table in Database with name of the Bean by default
+	- @Id -> Marks the field as Primary Key for the table
+	- @GeneratedValue -> Auto-increments the Primary Key Value on new record insertion
+	- @Table -> For specifying the table name, By default class would be considered
+	- @Column -> For specifying the column name, By default instance variable name would be considered
+
+H2 - In-Memory Database which can be embedded with spring boot project
+Can be used for development purpose. Data would be lost once the server is restarted.
+
+<dependency>
+<groupId>com.h2database</groupId>
+<artifactId>h2</artifactId>
+<scope>runtime</scope>
+</dependency>
+
+Console URL :http://localhost:8080/h2-console
+Default JDBC URL : jdbc:h2:mem:testdb
+
+JPA Relationships
+
+One to One Mapping : 
+
+@OneToOne -> Indicates current class has one to one mapping with the class specified
+@JoinColumn -> 
+Ex:  
+class Student {
+  @OneToOne
+  @JoinColumn(name="HOME_ADDRESS_ID")
+  private Address address;
+}
