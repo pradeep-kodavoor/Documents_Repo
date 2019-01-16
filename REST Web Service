@@ -1,0 +1,11 @@
+@RestController - Creates a REST Controller
+
+@RequestMapping(method = RequestMethod.GET,path='/hello) - Creates a RESTfull API with URI http:localhost:8080/hello
+
+@GetMapping - Short form for @RequestMapping(method = RequestMethod.GET)
+@PutMapping - Short form for @RequestMapping(method = RequestMethod.PUT)
+@PostMapping - Short form for @RequestMapping(method = RequestMethod.POST)
+@DeleteMapping - Short form for @RequestMapping(method = RequestMethod.DELETE)
+
+@GetMapping(path = '/hello') - Creates a RESTfull API with URI http:localhost:8080/hello, It should be invoked with GET method.
+
