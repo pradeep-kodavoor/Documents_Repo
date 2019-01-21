@@ -1,0 +1,28 @@
+Data Structures are used to organize the data so that it can be used effeciently.
+
+Big O Notation -
+Determines performance of the data structures
+Describes the complexity of the data structure
+
+O(1) - Constant time - No matter how many elements u have in your data structures, Algorithm always perform same number of operations
+O(logn) - Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
+O(n) - Linear - Descreases the performance as the elements decreases. Ex: For Loop, While Loop
+O(n^2) - Quadratic - As the number of elements increase, performance becomes very very low. Ex: Loop within loop
+O(c^n) - Exponential - Recusrive calls over n and loop over c in it.
+O(n!) - Factorial - Looping over n and recursive call in the loop for (n-1) elements
+
+Data Structures Performancen for average case: 
+                Access    Search    Insert    Delete
+Stack           O(n)      O(n)      O(1)      O(1)
+Queue           O(n)      O(n)      O(1)      O(1)
+Linked List     O(n)      O(n)      O(1)      O(1)
+Hash Table      O(1)      O(1)      O(1)      O(1)
+Binary Tree     O(logn)   O(logn)   O(logn)   O(logn)
+
+Methods of Stack: 
+
+push() - Adds an item to the top of a stack
+pop() - Removes an item from the top of a stack
+contains() - Checks if an element exists in the stack
+access() - Pops all the element till an item is found
+
