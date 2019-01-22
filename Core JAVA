@@ -1,3 +1,12 @@
+JVM Memory Model:
+
+Heap Area : Memory is allocated for Objects and arrays. Created when JVM starts.
+Method Area : Methods and fields are stored. 
+JVM Stacks: Local variable and partial results are stored. Stack frame is created for each thread.
+Native Method Stacks: Supports native methods
+
+Heap Memory : 
+
 Heap Memory - Will store the objects
 Stack Memory - Will store the variables
 
@@ -8,6 +17,13 @@ Comparison of reference variable compares its memory location not the values of 
 
 String - Immutable
 Once created, value cannot be changed in the memory location.
+
+Creating Immutable Class in JAVA
+  - Class should be declared as final, so that no other class can extend it.
+  - All variables of the class should be declared private, so that it cannot be accessed outside.
+  - There should not be any setter methods for modifying the variable values.
+  - Perform deep cloning of all reference variables(If class has reference variable do not assign it directly, 
+  instead extract the values of the reference variable and create a new Object).
 
 Variable Arguments. Takes any number inputs to a method. Introduced in JDK 5
 Syntax : sum (int... marks) 
@@ -100,6 +116,14 @@ class NullPointerException extends RuntimeException
    Class  - default: Accessible only inside the package, public: Visible everywhere
    Methods - public: Accessible everywhere, protected: Can only be used either in same package or sub-class
              private: Only available inside the class, default: Only available inside the package
+             
+   Protected Access Modifier:
+         Members can be accessed throughout the package.
+         In different package, 
+              members can be accessed directly or by creating object and reference of sub class.
+              members cannot be accessed by creating object and reference of super class.
+         
+         
    
  Non-Access Modifiers
    final
@@ -124,8 +148,23 @@ Anonymous class
    - Can be created by implementing an Interface or by extending a Class
  
 
-Serialization
-Why unique ID
+Serialization - Used of for storing the state of object in the disk or transferring over network.
+Class has to implement Serializable Marker Interface for allowing serilization of instances of the class.
+
+serialVersionUID 
+    - JVM generates by default based on the members of the class.
+    - Changes everytime when members are modified.
+    - Used during serialization and de-serialization as unique identifier of the class.
+
+Issues with JVM generated serialVersionUID
+    - Creates issues during De-serialization if there in a modification to the existing members of the class
+    - Throws an InvalidClassException, since SerialVersionUID changes on modification of existing members. 
+      Hence JVM treats it as a different class
+
+Declaring serialVersionUID
+    - If we declare serialVersionUID in our class, same would be used during serialization and de-serialization.
+    - Thus, even if we modify the members of the class serialVersionUID remains same. Hence JVM identifies class as 
+      new version of the existing class
 
 JIT Compiler Internal Implementation
 
@@ -134,6 +173,7 @@ Overloading Overriding
 Marker Interface
 
 AutoCloseable Interface
+For Try with Resources implementation, Classes should implement AutoCloseable Interface.
 
 
 
