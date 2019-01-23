@@ -19,10 +19,18 @@ Linked List     O(n)      O(n)      O(1)      O(1)
 Hash Table      O(1)      O(1)      O(1)      O(1)
 Binary Tree     O(logn)   O(logn)   O(logn)   O(logn)
 
-Methods of Stack: 
+Methods of Stack: LIFO - Last In First Out
 
 push() - Adds an item to the top of a stack
 pop() - Removes an item from the top of a stack
 contains() - Checks if an element exists in the stack
 access() - Pops all the element till an item is found
+
+Methods of Queue: FIFO - First In First Out
+
+enQueue - Inserts an element into a queue
+deQueue - Removes an element into a queue
+search - Search for an element in a queue
+access
+
 
