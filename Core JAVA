@@ -1,3 +1,29 @@
+Java Source File:
+    - A source file can have any number of classes.But it can have max 1 public class.
+    - If there are there more than one public class, Compiler asks us to declare the class in separate file.
+    - If there is no pubic class, Any name can be used as Source File name.
+    - A source file can have any number of main methods. For running any class it is mandatory to have main 
+    method with JVM supported format
+    
+Compiling and Running Java Source Code:
+    - Full Directory Path has to be sepecified while compiling
+    - D:\Users\734456\workspace\Core-Java-Practise\src\main\java>javac com/practice/sample/T.java
+    - Fully Qualified class name has to be specified while running a class.
+    - D:\Users\734456\workspace\Core-Java-Practise\src\main\java>java com.practice.sample.T
+
+Import Statements:
+    - Explicit Import : import java.util.ArrayList;
+    - Implicit Import : import java.util.*;
+    - Explicit import is always recommended since it improves readbility.
+    - Implicit import statement will only import all classes present in the current package. Classes in the sub package are 
+     not imported.
+    - Ex: java.util.regex.Pattern will be imported by using import java.util.regex.*
+    - import java.util.* will not import Pattern class.
+
+Classes and Interfaces present in java.lang imported automatically. Ex: Thread, Exception.
+All classes present in current working directory is available by default. No need of importing it.
+
+    
 JVM Memory Model:
 
 Heap Area : Memory is allocated for Objects and arrays. Created when JVM starts.
@@ -121,9 +147,7 @@ class NullPointerException extends RuntimeException
          Members can be accessed throughout the package.
          In different package, 
               members can be accessed directly or by creating object and reference of sub class.
-              members cannot be accessed by creating object and reference of super class.
-         
-         
+              members cannot be accessed by creating object and reference of super class.   
    
  Non-Access Modifiers
    final
