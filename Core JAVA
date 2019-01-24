@@ -5,9 +5,10 @@ Java Source File:
     - A source file can have any number of main methods. For running any class it is mandatory to have main 
     method with JVM supported format
     
-Compiling and Running Java Source Code:
+Compiling and Running Java Source Code with package declaration:
     - Full Directory Path has to be sepecified while compiling
-    - D:\Users\734456\workspace\Core-Java-Practise\src\main\java>javac com/practice/sample/T.java
+    - D:\Users\734456\workspace\Core-Java-Practise\src\main\java>javac -d . T.java
+    - Command create folders with package name in the current working directory
     - Fully Qualified class name has to be specified while running a class.
     - D:\Users\734456\workspace\Core-Java-Practise\src\main\java>java com.practice.sample.T
 
@@ -18,11 +19,26 @@ Import Statements:
     - Implicit import statement will only import all classes present in the current package. Classes in the sub package are 
      not imported.
     - Ex: java.util.regex.Pattern will be imported by using import java.util.regex.*
-    - import java.util.* will not import Pattern class.
+    - import java.util.* will not import Patternn class.
 
 Classes and Interfaces present in java.lang imported automatically. Ex: Thread, Exception.
 All classes present in current working directory is available by default. No need of importing it.
 
+Package : 
+    - Encapsulation mechanism to group of related classes and interfaces to a single unit.
+    - In any JAVA Source file atmost one package declaration is allowed.
+    - Package declaration should be first statement in the source file always.
+
+Order for JAVA Source file
+    - package declaration
+    - import statment
+    - ass/interface/enums
+
+Advantages: 
+    - Naming conflicts
+    - Modularity
+    - Maintainability
+    - Security
     
 JVM Memory Model:
 
