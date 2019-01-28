@@ -39,6 +39,52 @@ Advantages:
     - Modularity
     - Maintainability
     - Security
+
+Class Level Access Modifiers - Provides information about the behavior of the class to JVM
+
+Modifier applicable for top level class
+public - class can be accessed by anywhere.
+default - class can be accessed only within the package.
+
+
+abstract - applicable for classes and methods
+If a class has atleast one abstract method, it has to be declared abstract.
+
+final - 
+strictfp - 
+
+Modifier applicable for inner class in addition to above modifiers
+private -
+protected - 
+static
+
+
+
+
+ Access Modifiers
+   Class  - default: Accessible only inside the package, public: Visible everywhere
+   Methods - public: Accessible everywhere, protected: Can only be used either in same package or sub-class
+             private: Only available inside the class, default: Only available inside the package
+             
+   Protected Access Modifier:
+         Members can be accessed throughout the package.
+         In different package, 
+              members can be accessed directly or by creating object and reference of sub class.
+              members cannot be accessed by creating object and reference of super class.   
+   
+ Non-Access Modifiers
+   final
+      - Class cannot be extended 
+      - Method cannot be overriden 
+      - Variable value cannot be changed once it is assigned
+      - Varibae value can be assigned only once if it is not initialized
+   static
+      - Variable are present at Class level
+      - Single instance is available and shared accross all the objects
+      - Methods cannot access instance variables or methods . But Instance methods can access static variables and methods
+      - Methods can only access Static Methods and variables.
+  
+  Declaring constants : public static final int PI = 3.14;
     
 JVM Memory Model:
 
@@ -154,30 +200,7 @@ class NullPointerException extends RuntimeException
  CopyOnWriteArrayList
     Should be used when there more read operation than write.
   
- Access Modifiers
-   Class  - default: Accessible only inside the package, public: Visible everywhere
-   Methods - public: Accessible everywhere, protected: Can only be used either in same package or sub-class
-             private: Only available inside the class, default: Only available inside the package
-             
-   Protected Access Modifier:
-         Members can be accessed throughout the package.
-         In different package, 
-              members can be accessed directly or by creating object and reference of sub class.
-              members cannot be accessed by creating object and reference of super class.   
-   
- Non-Access Modifiers
-   final
-      - Class cannot be extended 
-      - Method cannot be overriden 
-      - Variable value cannot be changed once it is assigned
-      - Varibae value can be assigned only once if it is not initialized
-   static
-      - Variable are present at Class level
-      - Single instance is available and shared accross all the objects
-      - Methods cannot access instance variables or methods . But Instance methods can access static variables and methods
-      - Methods can only access Static Methods and variables.
-  
-  Declaring constants : public static final int PI = 3.14;
+
    
 Nested Class
     - Default Nested Class - Requires outer class reference for instantiating. InnerClass innerClass = nestedClassRunner.new InnerClass();
