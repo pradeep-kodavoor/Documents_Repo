@@ -202,6 +202,8 @@ REST services can be hit through any browser and get the data from server, So we
 
 spring-boot-starter-security -> Adds security to the REST services
 
+By Deafault Form Based Authentication is added to the application
+
 Default password will be printed in logs.
 For setting username & password  update below fields in property file.
 spring.security.user.name=pradeep
@@ -225,6 +227,8 @@ spring.security.user.password=dummy
   let headers = new HttpHeaders({ 
       Authorization:basicAuthHeadStr
       })
+      
+  Each and every REST call should have Basic Authentication added
   
   When Authorization Header is added to the request header, A pre-flight request would be triggered prior to the actual request with Method:OPTIONS to check if we have right permissions
   
@@ -236,7 +240,7 @@ spring.security.user.password=dummy
   Overriding Configure Method
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("Overridng Spring Security Configuration!!");
+		System.out.println("Overridng Spring Security Con figuration!!");
 		http
 			.csrf().disable() // Disable CSRF token
 			.authorizeRequests()
