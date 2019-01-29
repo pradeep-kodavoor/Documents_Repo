@@ -66,6 +66,7 @@ Sort Algorithms:
 
 Bubble Sort 
   - Performance degrades quickly as number of elements grows.
+  - Grows the sorted partition from right to left
 Algorithm:
   - Larger value in an array bubbles up to the top on each iteration.
   - During each iteration, an element is compared with the next one and swaped if an element is greater than the next one.
@@ -76,8 +77,31 @@ Performance:
   - O(n^2) - Quadratic - Time Complexity
   - It will take 100 steps to sort 10 elements, 10,000 steps to sort 100 elements so on..
   - Algorithm degrades quickly as number of elements increases.
+  - Stable Algorithm.
 
+Stable vs Unstable Algorithm
+  - Stable: Preserves relative ordering of duplicate items
+    Ex: If an array has 2 elements with value, its ordering is unaltered.
+  - Unstable: Does not preserve relative ordering of duplicate items
+    Ex: If an array has 2 elements with value, its ordering is changed.
+
+Selection Sort
+  - Divides the array into sorted and unsorted partition
+  - Grows the sorted partition from right to left
+  - Traverse the elements of Unsorted partition and find the largest element
+  - Swap the largest element with the last element
+
+Performance:
+  - In-place algorithm, logical partition of array is done. Extra memory is not required for partition.
+  - O(n^2) - Quadratic - Time Complexity
+  - It will take 100 steps to sort 10 elements, 10,000 steps to sort 100 elements so on..
+  - Algorithm degrades quickly as number of elements increases.
+  - Unstable Algorithm.
   
+  
+ Insertion Sort
+  - Divides the array into sorted and unsorted partition
+  - Grows the sorted partition from left to right
 
 Methods of Stack: LIFO - Last In First Out
 
