@@ -1,0 +1,63 @@
+Algorithms - Steps to be performed for accomplishing a particular task.
+Real time example: Steps involved in Preparing Tea.
+
+Need for Big O Notation:
+
+Same implementation can take different time when it is run on Super Computer and Normal Computer.
+Hence for determing performance based on number of steps Big O Notation was introduced, where performance is measured by taking 
+number of steps into account.
+
+Big O Notation -
+Determines performance of the data structures
+Describes the complexity of the data structure
+Tells us how well an algorithm scales as the input increases.
+Worst case is used to determine the time complexity of the algorithm.
+
+O(1) - Constant time - No matter how many elements u have in your data structures, Algorithm always perform same number of operations
+O(logn)(base 2) - Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
+O(n) - Linear - Descreases the performance as the elements decreases. Ex: For Loop, While Loop
+O(nlogn)(base 2) - n log-star-n Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
+O(n^2) - Quadratic - As the number of elements increase, performance becomes very very low. Ex: Loop within loop
+O(c^n) - Exponential - Recusrive calls over n and loop over c in it.
+O(n!) - Factorial - Looping over n and recursive call in the loop for (n-1) elements
+
+Sort Algorithms:
+
+Bubble Sort 
+  - Performance degrades quickly as number of elements grows.
+  - Grows the sorted partition from right to left
+Algorithm:
+  - Larger value in an array bubbles up to the top on each iteration.
+  - During each iteration, an element is compared with the next one and swaped if an element is greater than the next one.
+  - End of each iteration an element would be in correct position
+
+Performance:
+  - In-place algorithm, logical partition of array is done. Extra memory is not required for partition.
+  - O(n^2) - Quadratic - Time Complexity
+  - It will take 100 steps to sort 10 elements, 10,000 steps to sort 100 elements so on..
+  - Algorithm degrades quickly as number of elements increases.
+  - Stable Algorithm.
+
+Stable vs Unstable Algorithm
+  - Stable: Preserves relative ordering of duplicate items
+    Ex: If an array has 2 elements with value, its ordering is unaltered.
+  - Unstable: Does not preserve relative ordering of duplicate items
+    Ex: If an array has 2 elements with value, its ordering is changed.
+
+Selection Sort
+  - Divides the array into sorted and unsorted partition
+  - Grows the sorted partition from right to left
+  - Traverse the elements of Unsorted partition and find the largest element
+  - Swap the largest element with the last element
+
+Performance:
+  - In-place algorithm, logical partition of array is done. Extra memory is not required for partition.
+  - O(n^2) - Quadratic - Time Complexity
+  - It will take 100 steps to sort 10 elements, 10,000 steps to sort 100 elements so on..
+  - Algorithm degrades quickly as number of elements increases.
+  - Unstable Algorithm.
+  
+  
+ Insertion Sort
+  - Divides the array into sorted and unsorted partition
+  - Grows the sorted partition from left to right
