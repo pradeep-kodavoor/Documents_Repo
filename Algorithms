@@ -57,7 +57,34 @@ Performance:
   - Algorithm degrades quickly as number of elements increases.
   - Unstable Algorithm.
   
-  
  Insertion Sort
   - Divides the array into sorted and unsorted partition
   - Grows the sorted partition from left to right
+  - Starts by considering element at position 1 as element in sorted partition.
+  - On Each iteration, first element from unsorted partition is taken and inserted into sorted partition.
+  - We compare the value to be inserted with values in the sorted partition.
+  - Position of insertion is determined by comparing values in the sorted partition against new element.
+  - If new element is less than the elements in the sorted partition, elements are shifted in the sorted partition.
+
+Performance:
+  - In-place algorithm, logical partition of array is done. Extra memory is not required for partition.
+  - O(n^2) - Quadratic - Time Complexity
+  - It will take 100 steps to sort 10 elements, 10,000 steps to sort 100 elements so on..
+  - Algorithm degrades quickly as number of elements increases.
+  - Unstable Algorithm.
+  
+Shell Sort
+  - Variation of Insertion Sort
+  - Insertion chooses which element to insert using a gap of 1
+  - Shell sort starts out using larger gap value
+  - As the alogorithm progresses, gap value is reduced
+  - Last gap value is 1, at this point it is equivalent to insertion sort 
+  - Algorithm does preliminary works using gap value greater than 1 and then it performs insertion sort
+  - By the time we get to insertion sort array would be partialy sorted hence it takes less time.
+  
+Performance:
+  - In-place algorithm, logical partition of array is done. Extra memory is not required for partition.
+  - Time Complexity - Depends on the gap choosen. Worst case - O(n^2)
+  - It requires less shifting
+  - Unstable algorithm
+  
