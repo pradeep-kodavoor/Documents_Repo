@@ -102,11 +102,24 @@ Merge Sort
     + After first merge we will have a bunch of 2 element sorted array.
     + Then merge these sorted arrays to end up with bunch of 4 element sorted array.
     + Keep merging untill a single sorted array is formed
-    + 
+
 Performancs:
   - Not inplace, Uses temporary arrays
   - O(logn) - base 2 . We're repeatedly dividing the arrays into half during splitting phase
   - Stable Algorithm
     
-    
-  
+Quick Sort
+  - Divide and Conquer Algorithm
+  - Uses a pivot element to partition the elements of an array.
+  - Elements less than pivot to left and elements greater than pivot to right.
+  - So that, post partition pivot will be in its correct position
+  - Elements in left and right side need not be in sorted order
+  - Process is repeated for left and right sub-arrays as well.
+  - End of it, every element would end of becoming a pivot and all elements would be in its correct position
+ 
+Performancs:
+  - Not inplace, Uses temporary arrays
+  - O(logn) - base 2 . We're repeatedly partition the arrays into half during splitting phase
+  - Better than mergesort
+  - Unstable Algorithm
+  - Time complexity depends on pivot choosen
