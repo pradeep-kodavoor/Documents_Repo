@@ -99,10 +99,14 @@ Merge Sort
     + Keep splitting until all arrays have one element each.
   - Merging Phase:
     + Merge left and right sub arrays into sorted array.
-    + After first merge we will bunch of 2 element sorted array.
+    + After first merge we will have a bunch of 2 element sorted array.
     + Then merge these sorted arrays to end up with bunch of 4 element sorted array.
     + Keep merging untill a single sorted array is formed
-    + Not inplace, Uses temporary arrays
+    + 
+Performancs:
+  - Not inplace, Uses temporary arrays
+  - O(logn) - base 2 . We're repeatedly dividing the arrays into half during splitting phase
+  - Stable Algorithm
     
     
   
