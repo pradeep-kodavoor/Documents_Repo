@@ -116,10 +116,34 @@ Quick Sort
   - Elements in left and right side need not be in sorted order
   - Process is repeated for left and right sub-arrays as well.
   - End of it, every element would end of becoming a pivot and all elements would be in its correct position
- 
+
+Implementation:
+  - Consider first element as the pivot element.
+  - i -> to traverse array from left to right, initially points to start of array
+  - j -> traverse array from right to left, initially points to end of array
+  - Traverse the array from right to left by comparing each element to the pivot till we find an element that is less than the pivot.
+  - Once an element is found at position(j), replace an element at position(i) with new element.
+  - Now same element would be present in position i & j
+  - Now traverse the array from left to right by comparing each element to the pivot till we find an element that is greater than the pivot
+  - Once an element is found at position(i) replace element at position (j) with new element.
+  - Repeat the process untill i is less than j.
+  - Once i and j overlaps, replace the element at position j with pivot. Now pivoy element would be in its correct position in the array.
+  - At the end of the iteration, elements to the left of the pivot would be less than pivot and elements to the right would be greater than pivot.
+  
 Performancs:
   - Not inplace, Uses temporary arrays
   - O(logn) - base 2 . We're repeatedly partition the arrays into half during splitting phase
   - Better than mergesort
   - Unstable Algorithm
   - Time complexity depends on pivot choosen
+
+Counting Sort: 
+  - Make assumptions about the data
+  - Assumes that all values are within a range
+  - Only works with non-negative discrete values(Can't work with strings, floats)
+  
+Performancs:
+  - Not an in-place algorithm
+  - O(n) - Can be achieved since we are making assumption
+
+
