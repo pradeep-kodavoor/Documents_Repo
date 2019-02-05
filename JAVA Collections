@@ -1,3 +1,19 @@
+Collection - Used for representing group of individual objects as a single entity.
+
+Common methods: 
+  - boolean add(Object o) : Adds an element to the collection
+  - boolean addAll(Collection c) : Adds complete collection of elements to the collection
+  - boolean remove(Object o) : Removes an element from the collection
+  - boolean removeAll(Collection c) : Remove set(collection) of elements from the collection
+  - void clear() : 
+  - boolean retainAll(Collection c) : Except these c, all objects are removed from the collection
+  - boolean contains(Object o) : checks if an object exists in collection
+  - boolean contains(Object o) 
+  - boolean isEmpty()
+  - int size()
+  - Object[] toArray()
+  - Iterator iterator()
+
 Collection Interfaces
   - List
   - Set 
@@ -25,6 +41,11 @@ ArrayList
  - Basic Data Structure : Array
  - Insertion and Deletion are slower compared to Linked List
  - Constant access time
+ 
+Array List and Vector class implements RandomAccess Marker Interface. It is present in java.util package
+  - It allows for accessing any random element of an array with constant speed
+  - Ex: 1st element - A - 1 sec, 10th element Z - 1 sec
+
 Linked List
  - Basic Data Structure : Doubly Linked List
  - Iteration is slow, Access time is slow
@@ -137,6 +158,10 @@ LinkedHashMap
 TreeMap
   - implements NavigableMap, Map
   - Elements are sorted and stored
+
+WeakHashMap
+  - Eases the garbage collection
+  - If an object is specified as a key and it doesn't contain any reference, then it would be eligible for garbage collection
   
 Important common methods of Map 
 
