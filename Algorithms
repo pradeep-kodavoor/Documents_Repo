@@ -145,5 +145,35 @@ Counting Sort:
 Performancs:
   - Not an in-place algorithm
   - O(n) - Can be achieved since we are making assumption
+  
+Implmentation:
+  - Takes minimum value in the array and maximum value in the array as input
+  - First create the count array to count each values in the array , size would be (max value - min value)+1, 
+    to hold all values in the range
+  - Traverse the input array and count how many occurence of each value exists.
+  - Figure out the position in count array and increment the value.
+  - countArray[inputArray[i] - min]++; -> Increment the count of particular element in the array.
+  - Once countArray is completely created, Write the values to inputArray based on count Array values.
+  - Use Loop 1 for traversing elements in the count array and 1 Inner Loop for traversing the repeated elements in the array.
+  - Decrement the count values in inner loop
 
+Radix Sort:
+  - Makes assumption about the data it is sorting
+  - Assumes data has same radix and width.
+  - Radix -> range of values of digit or alphabet.
+  - Ex: Binary Digit - 2(0 and 1), Decimal - 10(0-9), English alphabet - 26(A-Z)
+  - Width -> Number of digits/letters
+  - Ex: 1234 - 4(Since it has 4 digits), Hello - 5 (Since it has 5 letters)
+  - Sort based on each individual letter or digit position starting from the rightmost digit.
+  - Stable sorting has to be used to preserve the order of previous sorting.
+  
+Performancs:
+  - O(n) - Can be achieved since we are making assumption
+  - Slower than O(nLogn) because of the overhead involved
+  - In-place depends on the sort alorithm
+  - Stable algorithm
 
+Stable Counting Sort:
+  - Requires some extra steps to make it stable
+  - Count the number as normal Counting Sort
+  - 
