@@ -142,6 +142,9 @@ MultiThreading
 2 wasy of creating thread
  - Extend Thread class
  - Implement Runnable Interface and pass the object to Thread class constructor
+ 
+join() and sleep() methods throws InterruptedException - Checked Exception.
+It has to be handled whenever these methods are used
 
 Executor Service - For creating multiple threads in a simpler ways and manage the size of thread pool
 execute() - For invoking a normal task
