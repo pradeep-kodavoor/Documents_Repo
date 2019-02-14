@@ -65,6 +65,10 @@ Performance:
   - We compare the value to be inserted with values in the sorted partition.
   - Position of insertion is determined by comparing values in the sorted partition against new element.
   - If new element is less than the elements in the sorted partition, elements are shifted in the sorted partition.
+  
+Implementation:
+  - firstInsortedIndex = 1 -> Second element in the array.
+ 
 
 Performance:
   - In-place algorithm, logical partition of array is done. Extra memory is not required for partition.
