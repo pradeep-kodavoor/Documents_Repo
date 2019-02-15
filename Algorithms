@@ -67,7 +67,14 @@ Performance:
   - If new element is less than the elements in the sorted partition, elements are shifted in the sorted partition.
   
 Implementation:
-  - firstInsortedIndex = 1 -> Second element in the array.
+  - Consider first element (index - 0) as sorted partition.
+  - Hence start from  firstUnsortedIndex = 1 -> Second element in the array. 
+  - Element at input[firstUnsortedIndex] is the element to be inserted.
+  - Now compare the elements in the sorted partition starting from right to left with the new element
+  - if new element is less than the element in sorted partition shift that particular element in sorted partition to its right.
+  - Stop the traversal when we find an element that is greater than new element.
+  - Place the new element in that position.
+  - Repeat the loop till all elements are inserted into it correct position.
  
 
 Performance:
