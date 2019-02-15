@@ -187,4 +187,9 @@ Performancs:
 Stable Counting Sort:
   - Requires some extra steps to make it stable
   - Count the number as normal Counting Sort
-  - 
+
+Implementation:
+  - Sort each digits starting from right to left using stable counting sort.
+  - In First iteration sort the rightmost digit.
+  - Get the digit of particular width
+  - (value/Math.pow(10,width))%radix
