@@ -106,12 +106,19 @@ Comparison of reference variable compares its memory location not the values of 
 String - Immutable
 Once created, value cannot be changed in the memory location.
 
+IntegerCache
+    - Feature introduced in JDK 5 for improving performance.
+    - Integer num1 = Integer.valueOf(20), Integer num2 = Integer.valueOf(20) 
+    - num1 == num2 will be true, Since value is cached and same reference would be used.
+    - Default values that are cached -127 to 127
+    - However it can be changed by altering VM parameter: -XX:AutoBoxCacheMax=1000
+
 Creating Immutable Class in JAVA
-  - Class should be declared as final, so that no other class can extend it.
-  - All variables of the class should be declared private, so that it cannot be accessed outside.
-  - There should not be any setter methods for modifying the variable values.
-  - Perform deep cloning of all reference variables(If class has reference variable do not assign it directly, 
-  instead extract the values of the reference variable and create a new Object).
+    - Class should be declared as final, so that no other class can extend it.
+    - All variables of the class should be declared private, so that it cannot be accessed outside.
+    - There should not be any setter methods for modifying the variable values.
+    - Perform deep cloning of all reference variables(If class has reference variable do not assign it directly, 
+    instead extract the values of the reference variable and create a new Object).
 
 Variable Arguments. Takes any number inputs to a method. Introduced in JDK 5
 Syntax : sum (int... marks) 
