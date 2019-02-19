@@ -208,12 +208,62 @@ Implementation of Stable Counting Sort
   - for(int k=n-1;k>=0;k--){
       temp[--countArray[getDigit(position,input[k],radix)]] = input[k];
     }
+    
   - When k=5,
-  - countArray[getDigit()] = countArray[2] for 5729. 
+  - Get the digit of particular width
+  - (value/Math.pow(10,width))%radix
+  - countArray[getDigit(...)] = countArray[2] for 5729. 
   - Since prefix subtract 1 from countArray countArray[2] = 1
   - Assign input[k] = 5729 to temp[1]
+  - Temp Array: 0 5729 0 0 0 0
+  - 0 1 2 3 4 5 6 7 8 9
+  - 0 0 1 3 3 3 3 3 4 6
+  - Rightmost value is written first, this gives stability
   
-
+  - When k=4,
+  - countArray[getDigit(...)] = countArray[8] for 4586. 
+  - Since prefix subtract 1 from countArray countArray[8] = 3
+  - Assign input[k] = 4586 to temp[3]
+  - Temp Array: 0 5729 0 4586 0 0
+  - 0 1 2 3 4 5 6 7 8 9
+  - 0 0 1 3 3 3 3 3 3 6
+  
+  - When k=3,
+  - countArray[getDigit(...)] = countArray[2] for 4725. 
+  - Since prefix subtract 1 from countArray countArray[2] = 0
+  - Assign input[k] = 4725 to temp[0]
+  - Temp Array: 4725 5729 0 4586 0 0
+  - 0 1 2 3 4 5 6 7 8 9
+  - 0 0 0 3 3 3 3 3 3 6
+  
+  - When k=2,
+  - countArray[getDigit(...)] = countArray[9] for 1594. 
+  - Since prefix subtract 1 from countArray countArray[9] = 5
+  - Assign input[k] = 1594 to temp[5]
+  - Temp Array: 4725 5729 0 4586 0 1594
+  - 0 1 2 3 4 5 6 7 8 9
+  - 0 0 0 3 3 3 3 3 3 5
+ 
+  - When k=1,
+  - countArray[getDigit(...)] = countArray[9] for 8792. 
+  - Since prefix subtract 1 from countArray countArray[9] = 4
+  - Assign input[k] = 8792 to temp[4]
+  - Temp Array: 4725 5729 0 4586 8792 1594
+  - 0 1 2 3 4 5 6 7 8 9
+  - 0 0 0 3 3 3 3 3 3 4
+  
+  - When k=0,
+  - countArray[getDigit(...)] = countArray[3] for 1330. 
+  - Since prefix subtract 1 from countArray countArray[3] = 2
+  - Assign input[k] = 1330 to temp[2]
+  - Temp Array: 4725 5729 1330 4586 8792 1594
+  - 0 1 2 3 4 5 6 7 8 9
+  - 0 0 0 2 3 3 3 3 3 4
+  
+  - Similar implementation can be used for sorting String array
+  - getDigit method has to altered to get character from a String
+  - str.charAt(position) - 'a'
+  
  
 Performancs:
   - O(n) - Can be achieved since we are making assumption
@@ -221,8 +271,3 @@ Performancs:
   - In-place depends on the sort alorithm
   - Stable algorithm
 
-Implementation:
-  - Sort each digits starting from right to left using stable counting sort.
-  - In First iteration sort the rightmost digit.
-  - Get the digit of particular width
-  - (value/Math.pow(10,width))%radix
