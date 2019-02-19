@@ -119,6 +119,10 @@ Creating Immutable Class in JAVA
     - There should not be any setter methods for modifying the variable values.
     - Perform deep cloning of all reference variables(If class has reference variable do not assign it directly, 
     instead extract the values of the reference variable and create a new Object).
+    
+Object.hashCode() and System.identityHashCode()
+    - When Object.hashCode() is called first preference is given to the hashCode() method overridden by the class.
+    - If hashCode() is not overridden, System.identityHashCode() is called to generate default hashCode of an object.
 
 Variable Arguments. Takes any number inputs to a method. Introduced in JDK 5
 Syntax : sum (int... marks) 
@@ -146,7 +150,7 @@ this - keyword to access state and behavior of current class
 
 MultiThreading
 
-2 wasy of creating thread
+2 ways of creating thread
  - Extend Thread class
  - Implement Runnable Interface and pass the object to Thread class constructor
  
