@@ -73,4 +73,36 @@ deQueue - Removes an element into a queue
 search - Search for an element in a queue
 access
 
+List 
+  - An Order Collection. 
+  - Implements AbstractList and AbstractSequentialList
+  - For creating data structure similar to array list AbstractList has to be implemented
+  - For creating sequential data structure similar to linked list AbstractSequentialList has to be implemented
+  - It is not a concrete data structure, it is abstract data type.
+  
+Abstract Data Type
+  - Doesn't dictate how that data is organized
+  - Dictates the operation you can perform
+  - In Java, Concrete Data Structure is represented by Class
+  - Abstract Data Structure is represented by Interface
+  - Any class that implements List is a list
 
+ArrayList 
+  - Resizable Array Implementation of the List Interface
+  - If we know the position of an element in the list accessing the element takes O(1).
+  - Adding items to the list takes more time if array is full. Since we need to create new array and copy all values.
+  - Removing an element as well takes more time, since it requires shifting of all the elements.
+  - Capacity - Max number of items that list can hold before it is resized
+  - Size - Number of items present in the list
+  - Initial capacity - 10, If more than items are expect to add in the list, Capacity has to be specified.
+  
+Methods of ArrayList:
+  - add(element) - Adds an element at the end of the list
+    + Checks first if the backing array is full, if it is full it will resize the array.
+    + Then element is added to the array
+  - set(index,data) - Updates the value at given index 
+  - add(index,data) - Adds an element at particular index
+  
+  
+  
+  
