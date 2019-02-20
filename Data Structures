@@ -119,6 +119,12 @@ Methods of ArrayList:
 Vector 
   - Thread safe Array List, Not Synchronized!
   - Since JDK 1.0, exists earlier to ArrayList.
+  - Performance is low, because of overhead associated with synchronization.
+  - If thread safe implementation is not needed it is recomended to use Array List
+  - Similar to Array List uses a backing array
+
+Methods of vector
+  - synchronized add(element) - Similar to arraylist, only difference is synchronization
   
   
   
