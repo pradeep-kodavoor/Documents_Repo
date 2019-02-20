@@ -126,6 +126,23 @@ Vector
 Methods of vector
   - synchronized add(element) - Similar to arraylist, only difference is synchronization
   
+Singly Linked List 
+  - It will have only one link within each nodes
+  - For traversing we got to start from head
+
+Insert an element at the front of the list
+  - Create a new node
+  - Assign next of newly created node to head node
+  - Assign head to newly created node
+  - Takes O(1) time
   
+Delete an element at the fron of the list
+  - Copy head node to temporary field
+  - Assign head to next of head node
+  - Return temporary field
+  - Takes O(1) time
+  
+  - 
+  - 
   
   
