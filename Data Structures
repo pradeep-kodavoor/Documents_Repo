@@ -95,6 +95,7 @@ ArrayList
   - Capacity - Max number of items that list can hold before it is resized
   - Size - Number of items present in the list
   - Initial capacity - 10, If more than items are expect to add in the list, Capacity has to be specified.
+  - Not synchronized, Not thread safe.
   
 Methods of ArrayList:
   - add(element) - Adds an element at the end of the list
@@ -102,6 +103,22 @@ Methods of ArrayList:
     + Then element is added to the array
   - set(index,data) - Updates the value at given index 
   - add(index,data) - Adds an element at particular index
+    + Internally System.arraycopy() function is used to shift all the elements to one position right wards before adding element
+    + After shifting all the elements, new element is set at the specified index.
+  - contains(data)
+    + By default contains method uses only objects reference to compare, If equals and hashCode() method is not overridden. (==)
+    + If equals and hashCode() method is overridden, contains uses it for searching an element in the list.
+    + returns false if not found
+  - indexOf(data)
+    + Behavior is similar to contains method.
+    + returns -1 is not found
+  - remove(data)
+    + Shifts array towards the specified index by one position.
+    + Sets last element to null and decrements the size.
+    
+Vector 
+  - Thread safe Array List, Not Synchronized!
+  - Since JDK 1.0, exists earlier to ArrayList.
   
   
   
