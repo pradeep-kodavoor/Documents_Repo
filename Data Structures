@@ -129,6 +129,9 @@ Methods of vector
 Singly Linked List 
   - It will have only one link within each nodes
   - For traversing we got to start from head
+  - Best used when we want to remove/add at the front of the list
+  - Advantage: Resizing is not required like array because of links.
+  - Disadvantages : Takes extra space for storing pointer.
 
 Insert an element at the front of the list
   - Create a new node
@@ -142,7 +145,49 @@ Delete an element at the fron of the list
   - Return temporary field
   - Takes O(1) time
   
-  - 
-  - 
+Doubly Linked List
+  - Each node points to next and previous item in the list
+  - For first item previous points to null and for last item next points to null
+  - We have reference to front and tail of the list, Hence insertion at front and last takes O(1) time
   
+Insert at head
+  - Create new Node
+  - If Head is not null
+    + Assign next of new node to head node
+    + Assign previous of head node to new node 
+  - Else if head is null
+    + Assign tail to new node
+  - Assign head to new node
+  - Takes O(1) time
+
+Insert at tail
+  - Create a new node 
+  - If tail is not null
+    + Assign previous of new node to tail 
+    + Assign next of tail to new node
+  - Else is tail is null
+    + Assign head to new node
+  - Assign tail to new node
+  - Takes O(1) time
+  
+Delete from head
+  - Assign head to temp node
+  - Assign Head to head's next field
+  - Assign Head's previous field to null
+  - return temp node
+  - Takes O(1) time
+  
+Delete from tail
+  - Assign tail to temp
+  - Assign tail to tail's previous node
+  - Assign tail's next to null
+  - return temp node
+  - Takes O(1) time
+
+Insert Node A between Node B and Node C
+  - Assign A's next to B's next
+  - Assign A's pevious to C's previous
+  - Assign B's next to A
+  - Assign C's previous to A
+  - Takes O(1) time , But finding insertion position takes O(n) time
   
