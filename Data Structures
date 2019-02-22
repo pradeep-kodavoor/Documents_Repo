@@ -76,8 +76,8 @@ access
 List 
   - An Order Collection. 
   - Implements AbstractList and AbstractSequentialList
-  - For creating data structure similar to array list AbstractList has to be implemented
-  - For creating sequential data structure similar to linked list AbstractSequentialList has to be implemented
+  - For creating data structure similar to array list AbstractList has to be extended
+  - For creating sequential data structure similar to linked list AbstractSequentialList has to be extended
   - It is not a concrete data structure, it is abstract data type.
   
 Abstract Data Type
@@ -152,10 +152,10 @@ Doubly Linked List
   
 Insert at head
   - Create new Node
-  - If Head is not null
+  - If Head is not null 
     + Assign next of new node to head node
     + Assign previous of head node to new node 
-  - Else if head is null
+  - Else if head is null (new node is the first in the list)
     + Assign tail to new node
   - Assign head to new node
   - Takes O(1) time
@@ -165,23 +165,33 @@ Insert at tail
   - If tail is not null
     + Assign previous of new node to tail 
     + Assign next of tail to new node
-  - Else is tail is null
+  - Else is tail is null (new node is the first in the list)
     + Assign head to new node
   - Assign tail to new node
   - Takes O(1) time
   
-Delete from head
-  - Assign head to temp node
-  - Assign Head to head's next field
-  - Assign Head's previous field to null
-  - return temp node
+Remove a Node from head
+  - Assign head to removedNode 
+  - If removedNode's next is null (It means there is only one node in the list)
+    + Assign null to tail
+    + Assign null to head
+  - Else
+    + Assign removedNode's next to head
+    + Assign head's previous to null
+  - Assign null to removedNode's next
+  - return removed node
   - Takes O(1) time
   
-Delete from tail
-  - Assign tail to temp
-  - Assign tail to tail's previous node
-  - Assign tail's next to null
-  - return temp node
+ Remove a Node from tail
+ -  Assign tail to removed node
+ - If removed node's previous is null (It means there is only one node in the list
+    + Assign null to head
+    + Assign null to tail
+ - Else
+    + Assign removed node's previous to tail
+    + Assign tail's next to null
+  - Assign remove node's previous to null
+  - return removed node
   - Takes O(1) time
 
 Insert Node A between Node B and Node C
@@ -191,3 +201,28 @@ Insert Node A between Node B and Node C
   - Assign C's previous to A
   - Takes O(1) time , But finding insertion position takes O(n) time
   
+LinkedList Java Class
+  - Doubly Linked List implementation
+  - Implements List and Dequeue Interfaces
+  - Since it implements List interafce it has all methods of List Interface
+  - It has its own  implementation of Node class
+  - Implementation is not synchronized
+  - For getting synchronized list - Collections.synchronizedList(new LinkedList())
+
+Methods
+  - void addFirst(data) - Adds an element at the front of the list
+  - void addLast(data) - Adds an element at the end of the list 
+  - boolean add(data) - Adds an element at the end of the list - Returns true on success
+  - removeFirst() - Removes an element from the front of the list
+  - removeLast() - Removes an element from the last of the list
+  - remove() - Removes an element from the front of the list
+  
+ Stack
+  - Abstract Data Type
+  - Last In First Out - LIFO
+  - Stack can be backed by any data structures
+  - Last item we add to the stack is always first item to be removed
+  
+  
+
+ 
