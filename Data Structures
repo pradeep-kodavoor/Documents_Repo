@@ -217,12 +217,18 @@ Methods
   - removeLast() - Removes an element from the last of the list
   - remove() - Removes an element from the front of the list
   
- Stack
+Stack
   - Abstract Data Type
   - Last In First Out - LIFO
   - Stack can be backed by any data structures
   - Last item we add to the stack is always first item to be removed
-  
-  
+  - push() - adds an item as the top item of the stack
+  - pop() - removes an item from top of the stack
+  - peek() - gets the top item of the stack
+  - Linked List can be used as a data structure for stack
+  - Takes O(1) for push(), pop() and peek() operation if we use Linked List
+  - Takes O(n) for push() operation if we use Array, coz we need to resize the array when it is full
+  - Takes O(1) for peek() and pop() if we use Array.
+
 
  
