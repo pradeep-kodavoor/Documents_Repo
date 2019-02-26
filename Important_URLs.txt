@@ -85,3 +85,10 @@ Command to clone 'dev' branch
   git clone -b dev https://github.com/pradeep-kodavoor/Git-Practice.git
 Command to push changes to 'dev' branch
   git push origin dev
+  
+Commiting changes to GIT using GIT Bash
+ - git status -> Displays all the files that are modified or added.
+ - git add <fully qualified filename> Mention all the file names to be added or modified separated by space
+ - git status -> Check the status of added files - If successfully added file names would be displayed in green color
+ - git commit - m "Added changes"
+ - git push origin master
