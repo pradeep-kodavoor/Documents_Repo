@@ -212,6 +212,7 @@ spring.security.user.password=dummy
 2 types of Authentication
 - Basic Authentication 
   - We send Basic Authorization Header which represents Username and Password
+  - Username and passoword is encoded and sent
   - We send this header as part of every request
   - No expiration time. Hence not secure.
 - Form Based Authentication 
