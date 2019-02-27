@@ -1,4 +1,6 @@
 Dynamically Typed Language
+Object Oriented Programming language
+But not class based language
 
 Primitive Data Types
   - String, Number and Boolean
@@ -24,4 +26,40 @@ Primitive Data Types
  (x==y) -> true
  (x===y) -> false
  
- Function should always have return type
+Function should always have return type
+
+Objects in JavaScript
+There are no classes in JavaScript
+JavaScript objects are free form and not not bind to any class
+
+Empty Object
+var myObj = {};
+
+Object - Collection of data(property) and functionalities
+Initialize the property of object on the fly
+myObj.prop="Hello";
+
+Creating and Initializing the object using literals
+var myObj = {"prop":"Hello"}
+
+Any property is always accessible by default. 
+
+If we access a property that doesn't exist it returns  "undefined"
+
+Accessing propery of object
+- Using dot operator : myObj.prop
+  + Cannot be used when we have property name with  invalid identifier/reserved word
+  + Faster than square bracket notation
+- Using square bracket notation : myObj["prop"]
+  + Can be used when we have property name with  invalid identifier/reserved word
+
+Nested Objects:
+  - Objects containing object as property 
+  - var myObj ={obj = {"prop":"hello"}}
+  - Accessing inner property myObj.obj.prop
+
+Objects are equal when they point to same memory location
+ - var myObj = {"prop":"Hello"}
+ - var myObj2 = myObj
+ - (myObj === myObj2) returns true
+
