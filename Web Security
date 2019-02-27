@@ -92,6 +92,26 @@ Refreshing a JWT Token - Increasing the expiration time
 	- GET Request to http://localhost:8080/refresh
 	- With Authorization Header : {Authorization: "Bearer token_value"}
 
+Authorizing the request
+	- We need to create a filer by implementing OncePerRequestFilter Interface 
+	- It checks if token is present in the request
+	- If token is present it validates the token - Checks the expiration time and gets the username from the token
+	- If token is valid, it would load the user details and it would set it security context holder
+	- SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken)
+	- This is used while processing the resource by all the servlets
+
+Get the user details
+	- User details can be stored in DB, LDAP or In-Memory
+	- Spring security provides an interface - UserDetailsService for providing user details
+
+AuthenticationEntryPoint
+	- Implement AuthenticationEntryPoint for handling un-authorized requests
+	
+WebSecurityConfigurerAdapter
+	- Implement WebSecurityConfigurerAdapter Interface and configure th security
+	- Provide the newly created AuthenticationEntryPoint
+	- Provide Once Per Request Filter as well
+
 Not REST Service call
 	- Should be made by adding Authorization Header in the request headers
 
