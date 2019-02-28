@@ -1,0 +1,20 @@
+Front End Application 
+Traditional Approach
+  - Write HTML
+  - Write JavaScript
+  - Embed JavaScript into HTML
+  - When HTML loads JavaScript also loads
+  - JavaScript can modify the DOMs
+
+Component based Approach
+  - Create a component
+  - Create a selector for that component Ex: header-section
+  - Use the selector to render the component Ex: <header-section></header-section>
+  - Components can have sub-components
+  - Root component of Angular application - app-root - <app-root></app-root>
+  - Component is split into 3 files
+    + HTML
+    + CSS
+    + TypeScript
+  - Starting point of Angular App - Index.html - Root element will be added here
+  - 
