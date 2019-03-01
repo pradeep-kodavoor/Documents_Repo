@@ -166,6 +166,28 @@ Callable Thread - task which returns some value
 submit(Callable task) -> Executes single callable task
 invokeAll(Collection of Callable tasks) -> Executes multiple callable task at a time
 
+Synchronization:
+    - synchronized - Modifier applicable only for methods and blocks, but not for classes and variables.
+    - If multiple threads are trying to operate simultaneously on the same Java object then there might be 
+    chances of Data Inconsistency problem.
+    - To overcome Data Inconsistency problem we are supposed to use synchronized keyword
+    - If a method/block declared as synchronized then at a time only one thread is allowed to execute that method/block 
+    on the given object so that data inconsistency problem will be resolved
+Disadvantages:
+    - Increases wait time of thread hence degrades performance
+
+Internally synchronization is implement using lock
+    - Object is locked when a thread executes a synchronized method
+    - Acquiring and releasing lock operations are internally taken care by JVM, Programmer is not responsible.
+    - While thread executes sychronized method on a object, remaining threads are not allowed to execute
+    any sychronized method simultaneously on the same object, but the remaining threads are allowed to execute 
+    non-synchronized methods simultaneously
+    - Lock concept is implemented based on object not based on method
+    - Every object in java has synchronized and non-synchronized area
+    - Synchronized area - Can be accessed by only one thread at a time should be used for read operation
+    - Non synchronized area - can be accesses by any number of threads at a time should be used to update operations
+
+
 Exception Handling
 
 Finally block - 
