@@ -187,6 +187,9 @@ Internally synchronization is implement using lock
     - Synchronized area - Can be accessed by only one thread at a time should be used for read operation
     - Non synchronized area - can be accesses by any number of threads at a time should be used to update operations
 
+Synchronous Block
+    - Performance will be improved using blocks, since we need not synchronize complete method
+    - Only certain lines can be synchronized
 
 Exception Handling
 
