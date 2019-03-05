@@ -176,7 +176,7 @@ Synchronization:
 Disadvantages:
     - Increases wait time of thread hence degrades performance
 
-Internally synchronization is implement using lock
+    - Internally synchronization is implement using lock
     - Object is locked when a thread executes a synchronized method
     - Acquiring and releasing lock operations are internally taken care by JVM, Programmer is not responsible.
     - While thread executes sychronized method on a object, remaining threads are not allowed to execute
@@ -207,8 +207,58 @@ Synchronous Block
     - Performance will be improved using blocks, since we need not synchronize complete method
     - Only certain lines can be synchronized
     - If only few lines code requires synchronization, then synchronized block is highly recommended.
-    - It reduces waiting time of thread and improves performance of the system/application
+    - It reduces waiting time of thread and improves performance of the system/application.
+    - synchronized(this) - gets lock of current object, Only after getting lock thread can execute the block
+    - synchronized(b) - gets lock of any particular object b
+    - synchronized(Display.class) - get class level lock of Display class
+    - synchronized() - is not applicable for primitives , Compilation error (Unexpected type found)
+    - Lock concept applicable for object types and class types but not for primitives
     
+What is synchronized keyword? where we can apply?
+    - Modifier applicable for methods and blocks
+Advantages of synchrnized keyword?
+    - Helps to solve data inconsistency problem
+Disadvantages
+    - Increases wait time of thread, thus affecting performance
+What is race condition?
+    - Multiple thread operate simultaneously on same Java object and causing data consistency
+How to resolve race condition?
+    - Use synchronized keyword
+    - If multiple threads are operating simultaneously on same Java object, then there may be chance of data inconsistency problem
+    this is called race condition
+    - We can overcome this problem by using synchronized modifier
+What is object lock? When it is required?
+    - Every object in java has a unique lock called object lock
+    - For executing synchronized instance method object lock is required
+What is class level lock? When it is required?
+    - Every class in java has a unique lock called class level lock
+    - For executing static synchronized instance method class level lock is required
+While a thread is executing synchronized method on the given object, is the remaining threads allowed to execute any
+other synchronized method simultaneously on the same object?
+    - No, since object is locked
+What is synchronized block?
+How to declare the synchronized block to get the lock of current object?
+    - synchronized(this)
+How to declare the synchronized block to get the class level lock?
+    - synchronized(Display.class)
+Advantage of synchronized block over method?
+    - Performance will be improved
+    - Waiting time of thread is decreased
+Can a thread acquire multiple locks simultaneously?
+    - Yes, thread can acquire multiple locks from different objects.
+What is synchronized statement?
+    - Statements present inside synchronized methods and synchronized blocks
+
+Inter Thread Communication - How 2 threads communicate with each other
+
+Need for inter thread communication
+    - When thread t1 is expecting an update from thread t2
+    - T1 need to check every 5min for update
+    - Instead t1 and t2 can communicate with each other by calling wait() and notify() method
+    - t1 calls wait() method - thread which is expecting an
+    update
+    - t2 calls notify() method - thread which is performs an update
+
 
 Exception Handling
 
