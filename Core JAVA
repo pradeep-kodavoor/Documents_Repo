@@ -58,9 +58,6 @@ private -
 protected - 
 static
 
-
-
-
  Access Modifiers
    Class  - default: Accessible only inside the package, public: Visible everywhere
    Methods - public: Accessible everywhere, protected: Can only be used either in same package or sub-class
@@ -250,16 +247,28 @@ What is synchronized statement?
     - Statements present inside synchronized methods and synchronized blocks
 
 Inter Thread Communication - How 2 threads communicate with each other
+    - 2 threads are communicate with each other by calling wait() , notify() and notifyAll() methods
 
 Need for inter thread communication
     - When thread t1 is expecting an update from thread t2
     - T1 need to check every 5min for update
     - Instead t1 and t2 can communicate with each other by calling wait() and notify() method
-    - t1 calls wait() method - thread which is expecting an
-    update
-    - t2 calls notify() method - thread which is performs an update
-
-
+    - t1 calls wait() method - thread which is expecting an update
+    - t1 goes on waiting state after executing wait() method
+    - t2 calls notify() method - thread which performs an update
+    - Thread responsible for performing an update, after updating it should call notify() method then waiting thread will get he 
+    notification and continues it execution with those updated items.
+ 
+wait(), notify() and notifyAll() methods are not part of Thread class, It is part of Object class why?
+    - Thread can call these methods on any Java Object
+    - Thread should have the ownership of object for calling wait() method
+    - Thread should have the lock of the object 
+    - Thread should be in synchronized area(either block or method)
+    - If no access or not called from synchronized area, RuntimeException - IllegalMonitorStateException would be thrown
+    - If a thread calls wait() method on any object, it immediately releases the lock of that object and enters to waiting state.
+    - If a thread calls notify() method on any object, it releases the lock but may not be immediately.
+    - Except wait(), notify() and notifyAll() there is no other where thread releases the lock
+    
 Exception Handling
 
 Finally block - 
