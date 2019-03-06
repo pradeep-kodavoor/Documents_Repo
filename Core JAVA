@@ -151,6 +151,35 @@ MultiThreading
  - Extend Thread class
  - Implement Runnable Interface and pass the object to Thread class constructor
  
+ Important Methods of Thread class : 
+    - start() and run() 
+        + Invoking start() method on thread object, executes run() method as a new thread of execution.
+        + start() method caused OS to initiate another thread from which run() method executes
+        + start() can be called only once on a thread or else IllegalThreadStateException would be thrown
+        + run() can be called directly, in that it would operate like an other method as part of the same thread by which it is called
+    - final isAlive()
+        + returns true is Thread is still running or if Thread is not terminated
+    - final join()
+        + waits until Thread on which it is called is terminated
+        + thread1.join(100) - waits for 1 sec for thread1 to get terminated then continues with normal execution.
+    - yield()
+        + Moves the current thread from Running to Runnable state
+        + However scheduler can bring it back to Running state
+        + Alternate approach as per Joshua Thread.sleep(1)
+    - static currentThread()
+        + Returns a reference to the current thread
+    - void interrupt()
+        + set the interrupt flag
+    - static boolean interrupted()
+        + static method, returns true if interrupted flag is set
+        + clears the flag
+    - boolean isInterrupted()
+        + instance method, just return true if interrupted flag is set
+    - static sleep()
+        + Causes thread to suspend execution for some time
+        + sleep(10) sleeps for 10 milliseconds
+        + sleep(1,10) sleeps for 1 milliseconds and 10 nanoseconds
+ 
 join() and sleep() methods of Thread class throws InterruptedException - Checked Exception.
 It has to be handled whenever these methods are used
 
@@ -267,7 +296,87 @@ wait(), notify() and notifyAll() methods are not part of Thread class, It is par
     - If no access or not called from synchronized area, RuntimeException - IllegalMonitorStateException would be thrown
     - If a thread calls wait() method on any object, it immediately releases the lock of that object and enters to waiting state.
     - If a thread calls notify() method on any object, it releases the lock but may not be immediately.
-    - Except wait(), notify() and notifyAll() there is no other where thread releases the lock
+    - Except wait(), notify() and notifyAll() there is no other method where thread releases the lock.
+
+Which of the following is valid?
+    - If a thread calls wait() method, immediately it will enter into waiting state without releasing lock. - Invalid
+    - If a thread calls wait() method, it releases the lock of that object but may not immediately. - Invalid
+    - If a thread calls wait() method on any object, it releases all locks acquired by the thread and immediately 
+    enter into waiting state - Invalid
+    - If a thread calls wait() method on any object, it immediately releases the lock of that particular object and 
+    enter into waiting state - Valid
+    - If a thread calls notify() method on any object, it immediately releases lock of that particular object. - Invalild
+    - If a thread calls notify() method on any object, it releases the lock of that object but may not be immediately - Valid
+    
+Conclusion:
+    - 2 threads can communicate with each other using wait(), notify() and notifyAll()
+    - wait(), notify() and notifyAll() are present in object class
+    - wait(), notify() and notifyAll() should be called from synchronized area only
+    - If thread calls wait() method, thread immediately releases the lock
+    - if thread call notify() method, lock is released but may not be immediately
+    - Except wait(), notify() and notifyAll() there is no other method where thread releases the lock.
+
+Syntax of wait() and notify() methods:
+    - public final native void wait(long var1) throws InterruptedException(Checked Exception); - milli seconds
+    - public final void wait(long var1, int var3) throws InterruptedException {} - milli seconds,nano seconds
+    - public final void wait() throws InterruptedException { this.wait(0L); }
+    - public final native void notify();
+	- public final native void notifyAll();
+
+    - Every wait() method throws InterruptedException which is Checked Exception, Hence wheneve we are using wait() method 
+    exception should be handled by either by try catch or throws keyword, Otherwise we will get compilation error.
+    
+Importance of wait() notify() in Thread lif cycle
+Normal Thread Life Cycle
+    - MyThread myThread = new MyThread(); -> New
+    - myThread.start(); -> Ready/Runnable
+    - If thread scheduler allocates processor -> Running;
+    - If run() method completes execution -> Dead 
+
+Wait() method would be executed when thread is in Running state
+    - When wait() method is executed thread goes to Waiting state
+    - If Waiting thread gets notification it goes to another Waiting state to get the lock in below cases
+        + If Waiting thread gets notification
+        + If time expires
+        + If Waiting thread gets interrupted
+    - Once Waiting thread gets lock it goes to Ready/Runnable state
+  
+Producer Consumer Problem
+    - Producer thread is responsible to produce items to the queue
+    - Consumer thread is responsible to consume items from the queue
+    - If queue is empty then consumer thread will call wait() method and enter into Waiting state
+    - After producing items to the queue, producer thread is responsible to call notify() method then waiting consumer will get that no
+    notification and continue its execution with updated items
+
+Difference between notify() and notifyAll()
+    - We can use notify() method to give notification for only one waiting thread
+    - If multiple threads are waiting, then only one thread will be notified and remaining threads will have to wait for
+    notifications.
+    - We cannot expect any particular thread to be notified, it depends on JVM any random thread would be notified.
+    - We can use notifyAll() for providing notification of all Waiting threads of a particular object.
+    - Eventhough multiple threads gets notified, but execution will be performed one by one because threads require lock, and only one 
+    lock would be available
+    
+- Only synchronized object has to be used inside synchronized block
+    + Ex: Object o1 = new Object(); Object o2 = new Object();
+    + synchronized(o1) { o2.wait(); } // Throws IllegalMonitorStateException
+    
+Java Multithreading is implemented using Green Thread Model and Native OS model
+    - Green Thread: Thread is completely managed by JVM without taking underlying OS Support. Deprecated model. Ex: SUN Solaris OS 
+    - Native OS Model: Thread managed by JVM with the help of underlying OS.Ex: All Windows based OS
+
+How to stop a thread?
+    - If we call stop() method immediately thread enters dead state.
+    - stop() method is deprecated and not recommended to use
+
+Deadlock - Infinte waiting, where 2 threads are waiting for each other forever
+    - synchronized keyword is the only reason for deadlock
+    - While using synchronized keyword, special care has to be taken
+    - There is no resolution for deadlock, but several prevention techniques are available
+    
+Deadlock vs Starvation
+    - Deadlock: Long waiting of a thread where waiting never ends
+    - Starvation: Long waiting of a thread where waiting ends. Ex: Waiting for 100 threads with higher priority
     
 Exception Handling
 
@@ -318,8 +427,6 @@ class NullPointerException extends RuntimeException
    
  CopyOnWriteArrayList
     Should be used when there more read operation than write.
-  
-
    
 Nested Class
     - Default Nested Class - Requires outer class reference for instantiating. InnerClass innerClass = nestedClassRunner.new InnerClass();
