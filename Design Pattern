@@ -1,0 +1,24 @@
+Singleton Pattern 
+  - Create an instance of an class and return the same instance when there is an request for an object
+Ex: Flight tracking system
+There can be multiple flights and multiple ATCs but there will be only one Satellite for all flights
+
+Implementing Singleton Class in JAVA
+  - Declare private constructor : thus preventing object creation using constructor
+  - Declare static field instance which holds the instance of the class
+  - Declare static method getInstance() which return the instance when required by other classes
+  - So that same instance is return each time getInstance() is invoked.
+
+Issue: When app is running in Multithreaded environment, 2 threads invoking getInstance() in parallel might create issue.
+  - Using synchronized is not recommended since method would be locked for creating instance.
+  - Alternative approach is Eager initialization of the object using static inner class.
+  - Create the static instance declaration and instantiate it inside the static inner class.
+  - return static_class.instance when getInstance() is invoked.
+  
+Observer Pattern
+  - publisher-subscriber model is based on this
+Ex: Stock market App
+  This app receives stock update request from different devices mobile phones, desktops, servers
+  App has to be polled for providing updates. When there 1million devices requesting updates it might hit performance.
+  
+  
