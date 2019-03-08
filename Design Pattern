@@ -17,8 +17,40 @@ Issue: When app is running in Multithreaded environment, 2 threads invoking getI
   
 Observer Pattern
   - publisher-subscriber model is based on this
+  - Many of the even based UI frameworks like react,angular are developed based on this pattern
 Ex: Stock market App
-  This app receives stock update request from different devices mobile phones, desktops, servers
-  App has to be polled for providing updates. When there 1million devices requesting updates it might hit performance.
+  This app receives request from different devices mobile phones, display boards for latest stock price.
+  App has to be polled for providing updates. When there 1million devices requesting updates causes extreme load to the server.
+  
+For solving above problem we can make use Observer Pattern
+  - Create a observable - Could be company name whose stocks gets updated
+  - Create a observer - Could be mobile device or display board which is looking for updated stock price
+  - When the stock price is updated immediately Observable will notify all of its observers 
+  - Hence server need not to handle request from the observers, Instead it just send the notfication as soon data is updated.
+  
+Proxy pattern
+  - Doing some task on behalf of original object, mostly used for logging and filtering
+  - Ex: Instead of paying our bills by ourself, asking someone else to do on behalf.
+  - Ex: Pre-processing or Post-processing a request object
+  - Ex: Caching mechanism, Security mechanism, Spring AOP
+Implementation : Website filter in office
+  - Create ISP interface
+  - Provide Proxy Implementation and Actual Implementation
+  - Proxy Implementation will filter the site, Actual implementation would get the correct resource 
+  - Proxy Implementation would first check if site is present in blocked sites list, if present it displays error message else 
+  it redirects to actual URL
+  - Whenever user invokes any URL it would first hit Proxy Implementation
+
+Decorator pattern
+  - Adding behavior statically or dynamically
+  - Extending functionality of objects without effecting the behavior of other objects
+  - Open for extension and closed for modification
+Ex: Dish TV
+  - We get only deafult set of channels when we buy it
+  - For extra channels we got subcribe it separately
+
+Implementation
+  
+  
   
   
