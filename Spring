@@ -79,3 +79,68 @@ What else?
 Similar to above, in the future Spring may add special functionalities for @Service, @Controller and @Repository 
 based on their layering conventions. 
 Hence, it's always a good idea to respect the convention and use it in line with layers.
+
+Spring AOP
+
+Aspect - A standard code/feature scattered across multiple places in the application, whic is quite different than the actual business logic
+Joinpoint - Particular point of execution like method execution, constructor calling or field assignment
+Advice - Action taken by aspect at particular joinpoint
+Pointcut - A regular expression that matches a Joinpoint. Each time a pointcut matches jointpoint advice associated with joinpoint is executed.
+Weaving - process of linking aspects with targeted objects to create an adviced object
+
+Spring Transaction Management
+
+ACID Properties
+  - Atomicity : Either transaction should be completely successful or it should not make any changes. 
+    Either all steps are successfull or no steps are successful.
+  - Consistency : Data should be consistent across the system before and after transaction 
+  - Isolation : If transaction is executed in parallel or serial output should be same
+  - Durability: Once transaction is successfull, even if system crashes transaction should be saved
+
+Dirty Read
+  - Reading the data before transaction is completed
+  -
+  
+Enable Transaction Management
+  - @EnableTransactionManagement annotation to be used in on @Configuration classes and enable transactional support:
+  Ex: @Configuration
+      @EnableTransactionManagement
+      public class PersistenceJPAConfig{}
+  - Bean class can be annotated with @Transactional annotation
+  Ex: @Service
+      @Transactional
+      public class FooService {
+        //...
+      }
+  - Annotation further supports
+    + Propogation level
+    + Isolation level
+  - Spring created proxies for all the classes annotated with @Transactional 
+  - Proxy allows framework to inject transaction logic before and after method invocation, similar to AOP
+  - Only public method should be annotated with @Transaction since for other proxies cannot be created.
+  - Isolation levels
+    + DEFAULT : Use the default isolation level of the underlying database
+    + READ_COMMITTED : A constant indicating that dirty read are prevented; non-repeatable reads and phantom reads can occur.
+      This level only prohibits a transaction from reading a row with uncommitted changes in it.
+    + READ_UNCOMMITTED : A constant indicating that dirty reads, non-repeatable reads and phantom reads can occur
+      This level allows a row changed by one transaction to be read by another transaction before any changes in that row have 
+      been committed (a "dirty read"). If any of the changes are rolled back, the second transaction will have retrieved an invalid row.
+    + REPEATABLE_READ : A constant indicating that dirty reads and non-repeatable reads are prevented; phantom reads can occur. 
+      This level prohibits a transaction from reading a row with uncommitted changes in it, and it also prohibits the situation where
+      one transaction reads a row, a second transaction alters the row, and the first transaction rereads the row, getting different 
+      values the second time (a "non-repeatable read").
+    + SERIALIZABLE: A constant indicating that dirty reads, non-repeatable reads and phantom reads are prevented.
+      This level includes the prohibitions in ISOLATION_REPEATABLE_READ and further prohibits the situation where one transaction reads 
+      all rows that satisfy a WHERE condition, a second transaction inserts a row that satisfies that WHERE condition, and the first 
+      transaction rereads for the same condition, retrieving the additional "phantom" row in the second read.
+      
+    - Propogation Levels
+      + MANDATORY : Support a current transaction, throw an exception if none exists.
+      + NESTED : Execute within a nested transaction if a current transaction exists, behave like PROPAGATION_REQUIRED else.
+      + NEVER : Execute non-transactionally, throw an exception if a transaction exists.
+      + NOT_SUPPORTED : Execute non-transactionally, suspend the current transaction if one exists.
+      + REQUIRED : Support a current transaction, create a new one if none exists.
+      + REQUIRES_NEW : Create a new transaction, and suspend the current transaction if one exists.
+      + SUPPORTS : Support a current transaction, execute non-transactionally if none exists.
+  
+  
