@@ -116,6 +116,19 @@ constructor() {} - similar to public A() of Java. Constructor name is always con
 
 ngOnInit : void {} - Method declaration, void - return type (optional), ngOnInit - method name
 
+Angular bootstrap process consists of the two major stages:
+
+  - constructing components tree
+  - running change detection
+
+The constructor of the component is called when Angular constructs components tree. All lifecycle hooks are called 
+as part of running change detection.
+
+Difference between ngOnInit() and constructor()
+  - constructor() is the first method called once the class is instantiated.
+  - constructor() should be used only to set dependency injection.
+  - ngOnInit() is called after constructor executes
+
 message : string = 'Hello World!' - Variable declaration, string - variable type (optional), message - variable name
 Based on the value assigned, type is determined if it is not specified.
 
