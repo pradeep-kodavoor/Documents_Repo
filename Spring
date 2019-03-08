@@ -96,11 +96,7 @@ ACID Properties
   - Consistency : Data should be consistent across the system before and after transaction 
   - Isolation : If transaction is executed in parallel or serial output should be same
   - Durability: Once transaction is successfull, even if system crashes transaction should be saved
-
-Dirty Read
-  - Reading the data before transaction is completed
-  -
-  
+ 
 Enable Transaction Management
   - @EnableTransactionManagement annotation to be used in on @Configuration classes and enable transactional support:
   Ex: @Configuration
@@ -133,14 +129,27 @@ Enable Transaction Management
       This level includes the prohibitions in ISOLATION_REPEATABLE_READ and further prohibits the situation where one transaction reads 
       all rows that satisfy a WHERE condition, a second transaction inserts a row that satisfies that WHERE condition, and the first 
       transaction rereads for the same condition, retrieving the additional "phantom" row in the second read.
-      
-    - Propogation Levels
-      + MANDATORY : Support a current transaction, throw an exception if none exists.
-      + NESTED : Execute within a nested transaction if a current transaction exists, behave like PROPAGATION_REQUIRED else.
-      + NEVER : Execute non-transactionally, throw an exception if a transaction exists.
-      + NOT_SUPPORTED : Execute non-transactionally, suspend the current transaction if one exists.
-      + REQUIRED : Support a current transaction, create a new one if none exists.
-      + REQUIRES_NEW : Create a new transaction, and suspend the current transaction if one exists.
-      + SUPPORTS : Support a current transaction, execute non-transactionally if none exists.
+      It involves full locking.It affets performace because of locking.
+    
+  - Diry Read : If T1 transaction reads data from table A1 that was written by another concurrent transaction T2.
+    If on the way T2 is rollback,the data obtained by T1 is invalid one.E.g a=2 is original data .
+    If T1 read a=1 that was written by T2.If T2 rollback then a=1 will be rollback to a=2 in DB.
+    But,Now ,T1 has a=1 but in DB table it is changed to a=2.
+  - Non-repeatable reads : If T1 transaction reads data from table A1.If another concurrent transaction(T2) update data on table A1.
+    Then the data that T1 has read is different from table A1.Because T2 has updated the data on table A1.
+    E.g if T1 read a=1 and T2 updated a=2.Then a!=b
+  - Phantom reads : If T1 transaction reads data from table A1 with certain number of rows. 
+    If another concurrent transaction(T2) inserts more rows on table A1.The number of rows read by T1 is different from rows on table A1
+    
+  - Propogation Levels
+    + MANDATORY : Support a current transaction, throw an exception if none exists.
+    + NESTED : Execute within a nested transaction if a current transaction exists, behave like PROPAGATION_REQUIRED else.
+    + NEVER : Execute non-transactionally, throw an exception if a transaction exists.
+    + NOT_SUPPORTED : Execute non-transactionally, suspend the current transaction if one exists.
+    + REQUIRED : Support a current transaction, create a new one if none exists.
+    + REQUIRES_NEW : Create a new transaction, and suspend the current transaction if one exists.
+    + SUPPORTS : Support a current transaction, execute non-transactionally if none exists.
+
+    
   
   
