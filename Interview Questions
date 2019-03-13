@@ -27,3 +27,11 @@ How to connect to save an object in different schemas using same class?
 
 Difference between get() and load() in hibernate?
 
+How to skip test case execution during Maven Build? 
+		<maven.test.skip>true</maven.test.skip>
+  
+Different levels of cache in Hibernate?
+
+What is Bean Validator?
+
+
