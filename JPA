@@ -30,9 +30,21 @@ Hibernate Configuration Properties for Oracle DB:
 	- connection.driver_class	: oracle.jdbc.driver.OracleDriver
 	- connection.username		: system
 	- connection.password		: system
+
+Different States of an object 
+	- Transient -> Persistent -> Detached
+	- (Entity entity = new Entity()) -> Transcient 
+	- Transcient -> (entity.save(), entity.persist(), entity.saveOrUpdate() ) -> Persistent -> (entity.delete()) -> Transcient
+	- Persistent -> (entity.evict(), session.close()) -> Detached -> (entity.update(),entity.merge()) -> Persistent
 	
+		
+When an object of an entity is created it will be Transient State
+persist(entity) - causes an entity to transit from Transient to Persistent state
+
 flush(): Flushing is the process of synchronizing the underlying persistent store with persistable state held in memory.
 it will update or insert into your tables in the running transaction, but it may not commit those changes.
+
+
 
 Hibernate Inheritance Mapping
 
@@ -121,3 +133,7 @@ One to One Mapping :
   		@JoinColumn(name="HOME_ADDRESS_ID")
   		private Address address;
 	}
+One to Many Mapping : 
+	
+	@OneToMany -> Indicates current class has one to many mapping with the reference class specified
+
