@@ -20,6 +20,91 @@ Can be used for development purpose. Data would be lost once the server is resta
 Console URL :http://localhost:8080/h2-console
 Default JDBC URL : jdbc:h2:mem:testdb
 
+Composite key:
+https://vladmihalcea.com/the-best-way-to-map-a-composite-primary-key-with-jpa-and-hibernate/
+
+Hibernate Configuration Properties for Oracle DB:
+	- hbm2ddl.auto  			: update/create
+	- dialect					: org.hibernate.dialect.Oracle9Dialect
+	- connection.url			: jdbc:oracle:thin:@localhost:1521:xe
+	- connection.driver_class	: oracle.jdbc.driver.OracleDriver
+	- connection.username		: system
+	- connection.password		: system
+
+Hibernate Inheritance Mapping
+
+Relational Databases cannot map class hierarchy to tables directly,
+For addressing it, JPA provides few strategies:
+	1. MappedSuperClass : Parent classes can't be entities, Table will not be created separately for parent.
+		Ex: For below code snip, Table would be created only for Employee with fields aadharNumber,name(Inherited fields) and company 
+		@MappedSuperClass
+		public class Person {
+			@Id
+			private Long aadharNumber;
+			private String name;
+		}
+		@Entity
+		public class Employee extends Person {
+			private String company;
+		}	
+	2. Single Table : Single table would be created for entire hierarchy. Default Inheritance Strategy
+		Ex: For below mentioned domains, single table would be created with fields product_id,name,color and author
+		@Entity
+		@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+		public class Product {
+			@Id
+			private Long productId;
+			private String name;
+		}
+		@Entity
+		public class Pen extends Product {
+			private String color;
+		}
+		@Entity
+		public class Book extends Product {
+			private String author;
+		}
+		DTYPE - Discriminator Type -  Default column added by Hibernate to differentiate entity, value: Entity name
+		Column Name and value can be changed and we can set the type of value
+		@Entity
+		@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+		@DiscriminatorColumn(name = "product_type", discriminatorType = DiscriminatorType.INTEGER)
+		public class Product { }
+		
+		For setting value
+		@Entity
+		@DiscriminatorValue("1")
+		public class Pen extends Product { }
+		
+	3. Joined Table : Table would be created for each class in the hierarchy. Primary key column of the parent is added in all the childs
+		Normalized Tables would be created
+		Ex: 2 tables would be created, one Animal Table with animal_id , one more Pet table with name and animal_id
+		@Entity
+		public class Animal {
+			@Id
+			private Long animalId;
+			private String species;
+		}
+		@Entity
+		public class Pet extends Animal{
+			private String name;
+		}
+		Foreign key column name can be altered by annotating child class with @PrimaryKeyJoinColumn(name ="PET_ID")
+		
+	4. Table per Class : Table would be created for each class in the hierarchy. Child class table will have all the inherited fields.
+		Ex: 2 tables would be created, one Animal Table with animal_id , one more Pet table with name, animal_id and species
+		@Entity
+		public class Animal {
+			@Id
+			private Long animalId;
+			private String species;
+		}
+		@Entity
+		public class Pet extends Animal{
+			private String name;
+		}
+	
+
 JPA Relationships
 
 One to One Mapping : 
