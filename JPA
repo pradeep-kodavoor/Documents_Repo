@@ -30,6 +30,9 @@ Hibernate Configuration Properties for Oracle DB:
 	- connection.driver_class	: oracle.jdbc.driver.OracleDriver
 	- connection.username		: system
 	- connection.password		: system
+	
+flush(): Flushing is the process of synchronizing the underlying persistent store with persistable state held in memory.
+it will update or insert into your tables in the running transaction, but it may not commit those changes.
 
 Hibernate Inheritance Mapping
 
@@ -109,11 +112,12 @@ JPA Relationships
 
 One to One Mapping : 
 
-@OneToOne -> Indicates current class has one to one mapping with the class specified
-@JoinColumn -> 
-Ex:  
-class Student {
-  @OneToOne
-  @JoinColumn(name="HOME_ADDRESS_ID")
-  private Address address;
-}
+	@OneToOne -> Indicates current class has one to one mapping with the reference class specified
+	By Default ADDRESS_ID is set as Join Column Name, We can change it by using @JoinColumn annotation
+	Ex:  Student class is having one to one relationship with Address class, 
+	Student Table gets created with additional field HOME_ADDRESS_ID, which maps a student with address
+	class Student {
+  		@OneToOne
+  		@JoinColumn(name="HOME_ADDRESS_ID")
+  		private Address address;
+	}
