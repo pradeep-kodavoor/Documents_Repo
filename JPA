@@ -24,27 +24,100 @@ Composite key:
 https://vladmihalcea.com/the-best-way-to-map-a-composite-primary-key-with-jpa-and-hibernate/
 
 Hibernate Configuration Properties for Oracle DB:
-	- hbm2ddl.auto  			: update/create
-	- dialect					: org.hibernate.dialect.Oracle9Dialect
-	- connection.url			: jdbc:oracle:thin:@localhost:1521:xe
+	- hbm2ddl.auto  		: update/create
+	- dialect			: org.hibernate.dialect.Oracle9Dialect
+	- connection.url		: jdbc:oracle:thin:@localhost:1521:xe
 	- connection.driver_class	: oracle.jdbc.driver.OracleDriver
 	- connection.username		: system
 	- connection.password		: system
 
-Different States of an object 
+Reference: https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate
+
+Persistence Context : First level cache of all objects that are loaded or saved to a database.
+In Hibernate, persistent context is represented by org.hibernate.Session
+In JPA, persistent context is represented by javax.persistence.EntityManager. 
+When we use Hibernate as JPA provider, Entity Manager implementation internally uses the underlying Session object.
+
+Different States of an entity 
+	- Transient : New object created to persist in the database. It is not attached to session.
+	- Persistent: This instance is attached to the session. On flushing the session records gets created in database.
+	- Detached : This instance was once attached to the session. On session.close or evict(), instance enters this state.
+
+Persistent instance is kind of online, whereas detached instance is offline.
+When we make changes to persistent objects, we need not save or update, just commit the transaction or closing the session and records would be saved to database.
+
+Entity Lifecycle
 	- Transient -> Persistent -> Detached
 	- (Entity entity = new Entity()) -> Transcient 
-	- Transcient -> (entity.save(), entity.persist(), entity.saveOrUpdate() ) -> Persistent -> (entity.delete()) -> Transcient
+	- Transcient -> (session.save(entity), sesssion.persist(entity), session.saveOrUpdate(entity)) -> Persistent -> (session.delete(entity)) -> Transcient
 	- Persistent -> (entity.evict(), session.close()) -> Detached -> (entity.update(),entity.merge()) -> Persistent
+
+When a new entity is created, initially it will be in Transient State
+void persist(entity) 
+	- Causes an entity to transit from Transient to Persistent state
+	- INSERT statements would be called for an entity in persistent state, when a transaction is committed or when session is flushed/closed.
+	- It operates on the passed instance. State of an entity is changed inplace.
+	- Cascades to its relations if cascade=PERSIST or cascade=ALL
+	- If we try to persist a detached instance, exception would be thrown
+save(entity)
+	- Persists an entity directly to the database. Need not commit transaction.
+	- Executes a query immediately when method is invoked.
+	- Behaves similar to persist, but it generates an identifier and assigns it to entity
+	- Hence if we try to save detached new identifier would be generated for same entity and duplicates gets saved in DB on commit.
+merge(entity)
+	- Updating the value of detached entity and getting it back to persistent state
+	- Returns an object that is loaded into persistent context and updated.
+	- Current object will not transit to Persistent state.
+	Ex:
+	Person person = new Person();
+	person.setName("Avinash);
+	session.persist(person); // Entity transits to Persistent state
+	session.evict(person); // Entity transits to Detached state
+	person.setName("Marut"); // Updating a Detached entity
+	session.merge(person);
+update(entity)
+	- Updating the value of detached entity and getting it back to persistent state
+	- Similar to merge but, State of the current entity is changed
+	- Throws exception if we try to update() transient 
+saveOrUpdate()
+	- Similar to update(), but this method will not throw exception
 	
-		
-When an object of an entity is created it will be Transient State
-persist(entity) - causes an entity to transit from Transient to Persistent state
+flush() 
+	- Flushing is the process of synchronizing the underlying persistent store with persistable state held in memory.
+	- It will update or insert into your tables in the running transaction, but it may not commit those changes.
 
-flush(): Flushing is the process of synchronizing the underlying persistent store with persistable state held in memory.
-it will update or insert into your tables in the running transaction, but it may not commit those changes.
-
-
+Proxy in Hibernate :
+	- Session.load() 
+		+ method returns a proxy object instead of actual object
+		+ Employee pradeep = session.load(Employee.class,1L); //Creates a un-initialized proxy object which will contain only id value
+		+ String firstName = pradeep.getFirstName(); // Causes hibernate to query database and get data using id.
+		+ throws ObjectNotFoundException is data is not found in Database.
+	- One to Many Relationships : Company is mapped with many employees
+		public class Company {
+			private String name;
+			private Set<Employee> employees;
+		}
+		Company cts = session.load(Company.class,1L);
+		String name = cts.getName(); 
+		+ On invoking getName(), Hibernate will only get the name of the company from the database, if fetch is lazy.
+	- Many to One Relationships : Many employees are mapped to a company
+		public Employee {
+			private String name;
+			private Company company;
+		}
+		Employee pradeep = session.load(Employee.class,1L);
+		String firstName = pradeep.getFirstName();
+		+ On invoking getFirstName(), Hibernate will get only first name and returns an un-intialized proxy of Company
+	- Session.get() 
+		+ Method directly querries database and gets data.
+		+ Will not throw exception if data is not found, instead return null object.
+	- Performance:
+		+ get() is convenient but load() is lighter.
+		+ Proper use of get() and load()
+		Employee pradeep = session.get(Employee.class,1L);
+		Company cts = session.load(Company.class,1L);
+		pradeep.setCompany(cts);
+		session.persist(pradeep);
 
 Hibernate Inheritance Mapping
 
