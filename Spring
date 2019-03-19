@@ -259,4 +259,6 @@ Creating custom annotation for providing user defined contraint
 	@Validated(UpdateBookValidation.class)
 	public Book updateBook(@Valid Book book) { } 
 
-  
+ Reference: https://reflectoring.io/bean-validation-with-spring-boot/
+ 
+ 
