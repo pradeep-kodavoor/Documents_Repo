@@ -150,6 +150,55 @@ Enable Transaction Management
     + REQUIRES_NEW : Create a new transaction, and suspend the current transaction if one exists.
     + SUPPORTS : Support a current transaction, execute non-transactionally if none exists.
 
+Bean Validation
+  - Constraints has to be defined in the entity class by annotating member variable
+  - Object of the class is passed into a Validator, which checks if constraints are satisfied.
+
+Validing Spring MVC Controller
+  - Validating Request Body
+    + In POST/PUT methods usual JSON payload is accepted as Input
+    + Spring automatically maps the JSON payload to Java Objects
+    + Validation API is used to validate the JSON payload
+    
+    + Constraints are added in the domain class by annotating the member variables
+    Ex: Below constraint fails when length of String "name" is less than 2 characters
+    @Size(min = 2, message = "Book name should have atleast 2 characters")
+	  private String name;
+    
+    + For validating the object, it should be prefixed with @Valid annotation
+    Ex: Method that handles Post request which accepts a JSON object of Class Book
+    By adding @Valid annotation, We will be instructing Spring to validate book object which is present in Request Body
+    @PostMapping("/book")
+	  public ResponseEntity<Void> addBook(@Valid @RequestBody Book book)
+    
+    + If validation fails, it triggers MethodArgumentNotValidException
+    + By default, Spring translates it to BAD REQUEST-400 response
+      
+    + We can handle the exception by creating a new class which extends ResponseEntityExceptionHandler
+    + Annotate the class with @ControllerAdvice for catching the exception
+    + Override the handleMethodArgumentNotValid() method
+    + Get Binding Result from the MethodArgumentNotValidException object and send it as part of ResponseEntity object
+    + Binding Result will have the details about number of failures and field name and message provided in the domain class
+    + So that client gets to know which field of the request body caused the failure
+    
+  - Validating Request Parameters and Path Variables
+    + Constraint can be added directly to the method parameter instead of defining it in class
+    
+    Ex: For validating path variable
+    public ResponseEntity<Book> getBook(@PathVariable @Min(1) Long id)
+    
+    Ex: For validating request parameter or query string
+    public ResponseEntity<Book> getBookById(@RequestParam @Min(1) Long id)
+    
+    + In this case even class has to be annotated with @Validated annotation
+    
+    + If validation fails, it triggers ConstraintViolationException 
+    + Spring does'nt have a default exception handler for this, hence it send INTERNAL SERVER ERROR-500 response
+    
+    + Custom Exception Handler has to be implemented for sending proper response code along with appropriate error message
+    + 
+    
+ 
     
   
   
