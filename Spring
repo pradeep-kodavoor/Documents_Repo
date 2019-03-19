@@ -154,7 +154,7 @@ Bean Validation
   - Constraints has to be defined in the entity class by annotating member variable
   - Object of the class is passed into a Validator, which checks if constraints are satisfied.
 
-Validing Spring MVC Controller
+Validing Input to a Spring MVC Controller
   - Validating Request Body
     + In POST/PUT methods usual JSON payload is accepted as Input
     + Spring automatically maps the JSON payload to Java Objects
@@ -179,6 +179,7 @@ Validing Spring MVC Controller
     + Override the handleMethodArgumentNotValid() method
     + Get Binding Result from the MethodArgumentNotValidException object and send it as part of ResponseEntity object
     + Binding Result will have the details about number of failures and field name and message provided in the domain class
+    + exception.getBindingResult().getAllErrors() will return the detailled info about validation failure
     + So that client gets to know which field of the request body caused the failure
     
   - Validating Request Parameters and Path Variables
@@ -196,9 +197,66 @@ Validing Spring MVC Controller
     + Spring does'nt have a default exception handler for this, hence it send INTERNAL SERVER ERROR-500 response
     
     + Custom Exception Handler has to be implemented for sending proper response code along with appropriate error message
-    + 
-    
+    + Creata a new class which extends ResponseEntityExceptionHandler
+    + Annotate the class with @ControllerAdvice for catching the exception
+    + Create a new method to handle ConstraintViolationException.
+    + Annotate the method with @ExceptionHandler(ConstraintViolationException.class) 
+    + Extract the error details from WebRequest object and send it as part of ResponseEntity object
+    + webRequest.getDescription(false) will return the detailled info about validation failure
+
+Validating Input to a Spring service method
+	-  For validating beans in service method, 
+		+ Similar to validation of controller, but here we need to annotate the class with @Validated for all types of validation
+		+ Annotate the class with @Validated
+		+ Annotate the argument with @Valid
+		
+Validating JPA Entities
+	- JPA validation is the last level of validation for any entity
+	- No need of externally instruction of JPA annotation
+	- Just annotate the member variables with appropriate constraint
+	
+Creating custom annotation for providing user defined contraint
+	- Create an annotation 
+	- Assign the validator class to the annotation
+	Ex: Custom annotation created for validating Author name
+	@Documented
+	@Retention(RUNTIME)
+	@Target(FIELD)
+	@Constraint(validatedBy = AuthorNameValidator.class) // Validator implementation class
+	public @interface AuthorName {
+		String message() default "Invalid Author"; // Default validation message to be thrown
+		Class<?>[] groups() default {}; // For applying validation to particular group
+		Class<? extends Payload>[] payload() default {};
+	}
+	
+	- Provide the validation logic in the validator class which implements ConstraintValidator Interface and override isValid method
+ 	Ex: Implementation for AuthorName constraint validation
+	public class AuthorNameValidator implements ConstraintValidator<AuthorName, String> {
+		@Override
+		public boolean isValid(String value, ConstraintValidatorContext context) {
+			if (value != null && value.equals("Pradeep")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
  
-    
-  
+ Group validation
+ 	- It should be implemented if we need few member variables to be validated only for certain method.
+	- Like, if we need to validate ID field only for update method.
+	
+	- Create a Marker Interface with group name
+	Ex: public interface UpdateBookValidation {	}
+	
+	- Specify the group name in constraint annotation
+	Ex: Here id is validation only for UpdateBookValidation group
+	@NotNull(groups = UpdateBookValidation.class, message = "ID cannot be null while updating a book")
+	private Long id;
+	
+	- Map the validator of a method to group name
+	Ex: Here updateBook method is mapped to UpdateBookValidation group
+	@Validated(UpdateBookValidation.class)
+	public Book updateBook(@Valid Book book) { } 
+
   
