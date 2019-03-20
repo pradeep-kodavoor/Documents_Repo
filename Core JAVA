@@ -464,5 +464,19 @@ Marker Interface
 AutoCloseable Interface
 For Try with Resources implementation, Classes should implement AutoCloseable Interface.
 
+Logging Configuration
+	Log Level: 
+		ERROR	: Only should be used if error occurs. Ex: Can be used in catch block
+		WARN 	: Should be used for warning. Ex: If there is 0 output for a search 
+		INFO	: Can be used providing info. Ex: User logged in, User logged out.
+		DEBUG	: When we need to know about steps progressed.
+		TRACE	: More details logs.
+		
+	Spring-jcl - provides logging in Spring Boot. It comes along with Spring-Boot-Started-Web
+	
+	By default logs will be written to console
 
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	logger.info("Logging the information..");
 
+	Configuration File
