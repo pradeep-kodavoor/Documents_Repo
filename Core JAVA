@@ -469,7 +469,7 @@ Logging Configuration
 		ERROR	: Only should be used if error occurs. Ex: Can be used in catch block
 		WARN 	: Should be used for warning. Ex: If there is 0 output for a search 
 		INFO	: Can be used providing info. Ex: User logged in, User logged out.
-		DEBUG	: When we need to know about steps progressed.
+		DEBUG	: When we need to know about steps progressed. Ex: Entering a method, Exiting a method
 		TRACE	: More details logs.
 		
 	Spring-jcl - provides logging in Spring Boot. It comes along with Spring-Boot-Started-Web
@@ -479,4 +479,52 @@ Logging Configuration
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	logger.info("Logging the information..");
 
-	Configuration File
+Configuration File
+
+Logger vs Appender
+	Logger : Captures logging information from the code
+	Appender : Publishes information that has been logged
+		- Console Appender
+		- Rolling File Appender
+
+System.out.prinln doesn't have a severity level, whereas using logging we can have different severity levels
+
+Configuring Logging in Spring Boot App
+	- Log levels can be configured in Application.properties.
+	- Can be configured in XML files of below mentioned names	
+		+ logback-spring.xml
+		+ logback.xml
+		+ logback-spring.groovy
+		+ logback.groovy
+	- Console and Rolling File appenders can be configured in the XML file
+	- Attribute in file
+		+ Property : A variable with a value
+		Ex: Below line indicates a folder named "logs" would be created in the current directory where all logs will be saved
+		<property name="LOGS" value="./logs"/> 
+		+ Appender : Publishes information that has been logged
+			- Console Appender : Logs to System.out or System.err
+			- File Appender : Logs to a file
+			- Rolling File Appender : Roll over log files when conditions are met
+		+ Rolling File Properties
+			- %i : Represents numeric file version. When file reaches the max size new file would be created with name appended with increment
+			- %d : Rolling over date, Creating a log file based on Day or Month or Year 
+			- Add .gz or .zip for automatic compression
+			- maxHistory : How many history files to keep after which it would be deleted by housekeeping
+			- maxFileSize : Max size of a Log file, after this is reached %i would be incremented.
+			- minIndex : Start index of rollover count
+			- maxIndex : Ending index of rollover count
+			- Behvaior : With log%i.txt filename, minIndex - 1, maxIndex - 3 when max file size is reached
+				log3.txt would be deleted 
+				log2.txt would be renamed to log3.txt		
+				log1.txt would be renamed to log2.txt
+				log.txt would be renamed to log1.txt 
+		+ Pattern identifiers	
+			- %d : Date of Logging event
+			- %p : Logging priority(DEBUG,INFO)
+			- %C : Class name that is logging
+			- %t : Thread that is logging
+			- %m : Message supplied for logging
+			- %n : Operating system line break
+		+ Ex: 
+		
+		
