@@ -145,6 +145,31 @@ Method Overriding - Overriding the implementation provided in the super class wi
 super - Keyword to access state and behavior of parent class
 this - keyword to access state and behavior of current class
 
+OOPS Concepts 
+
+	1. Data Hiding : Hiding of data, Outside class cannot access member data directly.
+		Ex: Check for mail in GMAIL , We will not be able to view mails unless we provide credentials.
+		- Implementation of data hiding
+			+ private field mail is declared as Private
+			+ public method is made available which can accept credentials and return the mail details
+		- Advantage of Data Hiding
+			+ Security : Only after providing credentials mail can be accessed
+	
+	2. Abstraction : Hiding the internal implementation, and only highlighting the set the services that we offer
+		Ex: ATM Machine. When we request for withdrawl, we will only get money. But we will not get any information on 
+		the internal implementation of withdrawl method. Bank will not never share such information.
+		Ex: 
+		- Implementation of abstraction
+			+ provide abstract methods using Interface
+			+ provding services only through GUI screens
+		- Advantage
+			+ Security : No one will be aware of internal implmentation
+			+ Easy to enhance : We can keep same GUI and change the back-end technology
+			+ Maintainanility and Modularity of application would be improved
+			
+	3. Encapsulation : 
+
+
 MultiThreading
 
 2 ways of creating thread
@@ -525,6 +550,6 @@ Configuring Logging in Spring Boot App
 			- %t : Thread that is logging
 			- %m : Message supplied for logging
 			- %n : Operating system line break
-		+ Ex: 
+	
 		
 		
