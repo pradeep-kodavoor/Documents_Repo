@@ -125,6 +125,13 @@ Hash value is the int value returned by the Hash function
 Bucket is used to store Key Value Pairs.
 Default implementation of bukcet is LinkedList, On exceeding limit it turns into RedBlack Tree for enabling faster traversal
 
+Each Node of an HashMap will have
+  - HashCode of Key : Value returned by Object.hashCode(), if method is not overridden by current object, 
+  System.identityHashCode() is called to generate default hashCode of an object.
+  - Key : Key set using put method
+  - Value : Value set using put method
+  - Next : HashMap.Node
+
 Methods of HashMap : 
 Public  V get(Object key) {
   if (key == null)
@@ -166,6 +173,12 @@ WeakHashMap
 Important common methods of Map 
 
 get(key) -> returns value against the key
+
+Internal Implementation
+  - Calculate the hash code for the key
+  - Calculate index for hash code
+  - Goto the index location and compare first elements key with given key, if equal return the value else check for next element
+
 size() -> returns size of map
 isEmpty() -> checks if map is empty
 containsKey(key) -> checks if key is present in map
@@ -174,6 +187,17 @@ keySet() -> Returns Set of Keys present in map
 
 put(key,value) -> inserts a key value entry to a map.
 Note: If key is already present, its value will be replaced with new value
+
+While iterating an HashMap 
+  - New (key,value) cannot be inserted - Concurrent Modification Exception would be thrown
+  - Value of an existing key can be modified - Program compiles successfully
+  
+Inserting a value to hashMap
+  - hashCode() returns unique hashCode of an object
+  - return value of hashCode() determines the bucket in which (key,value) should be inserted
+  - equals() compares the keys of an hashMap
+  - if equals() returns true, that means keys are equal, value would be replaced in the hash table
+  - if equals() returns false, that means keys are not equal, new key value pair would be created in the hash table
 
 entrySet() -> returns set of Entries(Key Value Pair) present in the map
 
