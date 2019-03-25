@@ -154,4 +154,3 @@ Difference between Iterator and Spliterator
   - Traverse
     + Spliterator can traverse elements in bulk/individualy
     + Iterator can only traverse elements  individualy
-  - 
