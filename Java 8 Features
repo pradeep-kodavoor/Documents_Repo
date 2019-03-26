@@ -154,3 +154,243 @@ Difference between Iterator and Spliterator
   - Traverse
     + Spliterator can traverse elements in bulk/individualy
     + Iterator can only traverse elements  individualy
+ 
+Type Inference in Java 8
+  - Compiler can see each method's invocation and declaration and determines the type arguments required for invocation
+  - By type inference Java Compiler can determine the type of arguments as well as the type of result being returned
+  - Type Inference Algorithm looks for most specific type that can work with all types of arguments
+  Ex: When getNumber is invoked with "d" string and TEN, in this case Java Compiler comes to know that return type is BigDecimal
+  static<T> T getNumber(T a1, T a2) {return a2;}
+  BigDecimal bigD = getNumber("d",BigDecimal.TEN);
+
+Does Java 7 support Type Inference
+  - Yes it supports but limited to only methods
+  - In Java 8 Type Inference is enhanced. Now it can be used with lambda expressions, functions and method references
+  - Dynamically compiler can know what is return type and what is the type of arguments
+  
+How does internal iterator works in Java 8
+  - When collection controls the iteration it is called external iteration
+  - Collection has its own state
+  - When iterator controls the iteration it is called internal iteration
+  - Easier to implement we need to store the state
+  
+Difference between internal and external iterators
+  - Control
+    + Collection controls the external iterator
+    + Iterator controls the internal iterator
+  - Iterate the elements
+    + External iterator can iterate elements only individually
+    + In External iterator, elements are iterated in sequentially
+    + Internal iterator can iterate elements individually/bulk
+    + Int Internal iterator elements are iterated in squential as well as parallel manner
+
+Advantages of internal iteration over external iteration
+  - Internal works based on functional programming
+  - Code is more readable and concise
+  - It supports concurrency and parallel processing
+
+Uses of internal iteration
+  - Application that requires high performance, parallel processing and bulk operations
+
+Disadvantages of internal iteration
+  - Developer will not have control over the iteration since Java API controls the iteration
+
+Creating concrete methods in interface
+  - default method : method marked with default keyword, Marks the default behavior of the class that implements the interface
+  - static method
+
+Why do we need default methods in an interface in Java 8 ? 
+  - For provding backward compatibility
+  - So that a class can implement a interface by providing only implementations that are supported by the class
+  Ex: interface Car with 3 method start() stop() and fly(). Class BMW supports flying feature hence it can provide implementation for 
+  all 3 methods, whereas Class Toyoto doesn't support flying feature. This problem is solved with default methods.
+  
+Why do we need static methods in an interface in Java 8 ? 
+  - It is utility or helper method created at class level
+
+Uses of static methods
+  - Single class
+    + No need of separate util class for storing utility methods. We can keep it in same interface
+  - Encapsulation
+    + Complete behavior of the class is encapsulated within same class. By eliminating util/helper classes
+  - Extension
+    + Easier to extend
+
+Core ideas behind Date/Time API
+  - Immutable-value classes
+    + New API avoids thread safety and concurrency issues by ensuring that all core class are immutable and represent well defined values
+  - Domain-driven design
+    + New API is modelled on precise domain with classes that represent different use cases for Date and Time
+  - Separation of chronologies
+    + New API allows people to work with different callendar systems
+    + It supports the needs of users in different areas of world
+    Ex: Thailand doesn't follow ISO-8601
+  
+Advantage of new Date and Time API over old Date API
+  - Concurrency
+    + java.util.Date, SimpleDateFormatter classes were not thread safe
+    + We had to deal with concurrency issues
+    + With new API developer need not worry about concurrency issues
+  - Better Design
+    + API design was not good
+    + Year was starting by 1900, Month starts by 0 and date starts by 1
+    + In Java 8 Date Time API all these are handled very well
+  - No need of 3rd Party Library
+    + With the popularity of 3rd party library like Joda Time, Java has to make its native date/time API comparable
+    + Now we can use JAVA API instead of 3rd Party library
+    
+Difference between Legacy Date/Time API and Java Date/Time API
+  - Thread safety
+    + Old API was not thread safe
+    + New API is thread safe
+  - Immutable 
+    + Old API has many mutable objects
+    + New API is based on immutable objects
+  - Performance
+    + Performance of old API is not good
+    + New API performs better than old API
+  - Readability
+    + Old API is less readable and maintainable
+    + New API is vert well designed and more readable
+  - Month values
+    + Old API range was 0-11
+    + Old API range is 1-12
+    
+How can we get duration between 2 dates/times ?
+  - Java 8 has a new class Duration which provides the utility for computing difference between 2 dates 
+  - Duration.between(date1,date2) 
+
+What is the new method family introduced in Java 8 for processing of Arrays in Multicore machines ?
+  - Java 8 has enhanced Array class with methods that can run efficiently on multi core machines
+  - Arrays.parallelSetAll(); 
+  - Arrays.parallelSort();
+  - Methods prefixed with parallel which sorts the large set of data parallel. It gives good performance because of parallel processing
+  
+How does Java 8 solve Diamond problem of Multiple inheritance ? 
+  - If class extends more than one class with 2 different implementation for the same method it causes Diamond problem
+  - In JAVA we hav remedy to solve this problem
+  - method is prefixed by Interface name to invoking the parent class method
+  Ex: Accessing super class method with Remedy, which solves diamond problem
+  public interface BaseInterface { default void display() {} }
+  public interface BaseOne extends BaseInterface {}
+  public interface BaseTwo extends BaseInterface {}
+  public class ChildClass implements BaseOne, BaseTwo {
+    default void display(){
+      BaseOne.super.display(); //BaseOne is Remedy used here
+    }  
+  }
+  - It is mandatory for the child class to override the conflicting method
+  - If we need super class of method to be invoked Remedy has to be used along with super keyword
+  
+Differences between Predicate, Supplier and Consumer
+  - All three are Functional Interface and Annonymous Function, can be used as an assignment target for lambda expression
+  - Predicate
+    + Accepts one argument and returns one result Ex: isEqual() , and(), or()
+  - Supplier
+    + Accepts no argument and it returns a result Ex: get()
+  - Consumer
+    + Accepts one argument but doesn't return anything Ex: accept(), andThen()
+  
+Is it possible to have default method definition in an interface without marking it with default keyword?
+  - No, we have to always mark default method with default keyword
+  - Else compile time error would be thrown
+
+Can we access static method using reference of an interface?
+  - No, static method should be accessed using the name of the interface
+  
+How can we get name of Parameter using Reflection API?
+  - Parameter.getName() to get the name of the parameter
+  - We need to turn on this feature in Java Compiler
+  - Compile source code by using command javac -parameter
+  - Use Parameter class name to access methods like getName() , isNamePresent()
+  - getName() returns parameter names
+  - isNamePresent() checks if .class contains original parameters
+  -  To set -parameters compiler argument in ellipse follow the below steps. 
+    1. Go to Window-> Preferences-> Java-> Compiler 
+    2. Select Store information about method parameters (usable via reflection) and click ok. This is equivalent to javac -parameters command. 
+ 
+What is Optional in Java 8
+  - It is a container object that may have a null or not null value.
+  - If it has value isPresent() returns true.
+  - Usefull in handling data with null values
+  - Inspired Google' Guava Library
+
+Uses of Optional
+  - To avoid NullPointerException
+  - It performs null checks at compile time, So we do not get Runtime Exception for a null value
+  - Optional removes codebase pollution by removing unnecessary null checks
+  - Can be used to handle the default case for a null data
+
+Which method in Optional provides fallback mechanism in case of null value ?
+  - orElseGet() method can be used as fallback mechanism for null data values
+  
+How can we get current time using Java 8 Date Time API
+  - millis() method of Clock class can be used to get current time in milli seconds
+  - instant() method of Clock class can be used to get current time in readable time
+  Ex: Clock clock = Clock.systemUTC();
+  System.out.println(clock.millis()); // Prints 1553594227952 - current time in millis
+  System.out.println(clock.instant()); // Prints 2019-03-26T09:57:07.952Z - current time in readable format
+  
+Can we define a static method in an interface?
+  - Yes we can define
+  - static methods cannot be accessed using object reference, it can only be accessed by using Interface name
+  - Ex: BaseOne.displayThree();
+
+How can we analyze the dependencies in Java classes and packages?
+  - jdeps can be used for analyzing package level and class level dependencies
+  - clas name or jar file name can be passed as argument
+  - returns the dependent jars and class names
+  Ex: 
+  jdeps NumberSquareMapper.class
+  NumberSquareMapper.class -> C:\Program Files\Java\jdk1.8.0_181\jre\lib\rt.jar
+   com.practice.functionalProgramming (NumberSquareMapper.class)
+      -> java.lang
+      -> java.util.function
+
+New JVM arguments introduced in Java 8
+  - PermGen space of ClassLoader is removed. It is replaced by MetaSpace
+  - For setting initial memory of Metaspace -XX:MetaSpaceSize 
+  - For setting max memory of Metaspace -XX:MaxMetaSpaceSize 
+  
+New Annotations introduced in Java 8
+  - @FunctionalInterface
+    + Used to mark an interface as functional interface
+  - @Repeatable
+    + Used for marking another annotation
+    + It indicates marked annotation can be applied multiple times
+    
+StringJoiner in Java 8
+  - New class in Java to create a String
+  - It can be used to construct sequence of charaters separated by a delimiter. 
+  - It can optionally add prefix and suffix
+  Ex: 
+    StringJoiner joiner = new StringJoiner(":", "[", "]");
+		joiner.add("Sunday");
+		joiner.add("Monday");
+		joiner.add("Tuesday");
+		System.out.println(joiner.toString()); //[Sunday:Monday:Tuesday]
+    
+ What is the type of Lambda Expression?
+  - Type depends on the context it is being used
+  - It does not have any type of its own
+  - Generally it is an instance of Funtional Interface
+
+What is the target type of Lambda Expression?
+  - Functional Interface
+  - Lambda expression should have same parameter type as the parameter type of the function in the interface same applies with return type
+  
+Difference between interface with default method and abstract class
+  - Instance variables
+    + Interface cannot have instance variables
+    + Abstract class can have instance variables
+  - Constructors
+    + Interface cannot have constructors
+    + Abstract class can have constructors
+  - Concrete methods
+    + Interface cannot have concrete methods other than default methods
+    + Abstract class can have concrete methods
+  - Lamda
+    + Interface with one default method can be used in lamda
+    + Abstract class cannot be used in lambda
+  
+
