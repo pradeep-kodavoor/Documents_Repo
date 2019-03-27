@@ -50,7 +50,13 @@ Ex: Dish TV
   - For extra channels we got subcribe it separately
 
 Implementation
-  
-  
+  - Declare an interface SatelliteTV with methods show(channelNumber) and subscriptionCost() 
+  - Implement SatelliteTV and create a Concrete class SkyTV
+  - Create a abstract class Channel that implements SatelliteTV
+  - We need to have a SatelliteTV as field reference inside channel class
+  - All the decorator use this to give control back to wrapper class
+  - Use cases
+    + Show the channel if it is subcribed
+    + Return the total subscription charge
   
   
