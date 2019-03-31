@@ -4,6 +4,13 @@ Command for Setting up http-proxy for GIT Hub in Git Bash
 Syntax : git config --global http.proxy http[s]://userName:password@proxyaddress:port
 Sample: git config --global http.proxy http://pradeep-kodavoor:Sept@2018@proxy.cognizant.com:6050
 
+Commiting new project to GIT
+  - Create a local Repo -> git init
+  - Commit files to local Repo -> git commit -m"Your comment"
+  - Map remote repo to local repo -> git remote add origin <Link to GitHub Repo> 
+  - Verify the link to remote repo -> git remote -v
+  - Push the committed changes to remote repo -> git push -u origin master
+
 Cloning a specific branch from GIT
 Command to clone 'dev' branch
   git clone -b dev https://github.com/pradeep-kodavoor/Git-Practice.git
