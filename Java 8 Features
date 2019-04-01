@@ -34,9 +34,12 @@ Lambda Expression in JAVA 8
   Arrays.asList("A","B","C").forEach(element->System.out.println(element))
   
   - 3 parts of Lambda
-    + Parameter List - (element) -  Can have zero or more parameters
-    + Lambda Arrow operator - (->) - Separates Parameter list and body
-    + Body - (System.out.println(element)) - Piece of code that we are supposed to execute. Braces are optional
+    1. Parameter List - (element) -  Can have zero or more parameters. Specifying the type of argument is optional
+    	+ () : Indicates function doesn't take any arguments. It is mandatory to specify when using no-arg annonymous function
+	+ value : Indicates function accepts only one arguments. Brackets are optional in case of single argument
+	+ (key,value) : Indicates that function accepts 2 arguments. 
+    2. Lambda Arrow operator - (->) - Separates Parameter list and body
+    3. Body - (System.out.println(element)) - Piece of code that we are supposed to execute. Braces are optional
 
   - Return Type of Lambda Expression is a Functional interface. Most of the time java.lang.Runnable Interface.
   
