@@ -230,5 +230,45 @@ Stack
   - Takes O(n) for push() operation if we use Array, coz we need to resize the array when it is full
   - Takes O(1) for peek() and pop() if we use Array.
 
+Queue
+  - Abstract Data Type
+  - First In First Out - FIFO
+  - First item added is the first item to be removed
+  - add() - also called enqueue - adds an item to the end of a queue
+  - remove() - also called dequeue - removes an item from the front of the queue
+  - peek() - get the item from the front of the queue, but don't remove it
+  - Queue can be backed with Array or Linked List.
+  
+Implementation: 
+  - add()
+    + Check if back equals to length of the queue to verify if queue is full
+    + If queue is full, resize the queue
+    + if (back == queue.length-1) { //resize the queue }
+    + Else add an element at back position and increment back
+  - remove()
+    + Check if queue is empty, if empty throw a NoSuchElementException
+    + Assign element at the front of the queue to a variable
+    + Assign position at the front of the queue with null
+    + Increment front
+    + return the assigned variable
+    + If size is 0 re-initialize front and back to 0
+  - size()
+    + return (back - front) as the size of the queue
+  - peek()
+    + Throw a NoSuchElementException, if queue is empty
+    + return element at the front of the queue
+    
+Disadvantages of Queue
+  - If more elements are removed and added in succession, size of array shoots up whereas elements would be either 1 or not.
+  - Array would be filled with empty spaces
+  
+Circular queue
+  - For overcoming the dis-advantages of regular Queue we would go for Cicular Queue
+  - Here we wrap the back of the queue with the front of the queue
+  - Back would be connected to the front of the queue
 
- 
+Implemenatation
+  - add()
+    + Alter the condition which was used to check if queue is full
+    + Check if queue is full by making use of size() method instead of relying on back variable
+    + if (size() == queue.length-1) { //resize the queue }
