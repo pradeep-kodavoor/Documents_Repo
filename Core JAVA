@@ -560,4 +560,5 @@ Garbage Collection
 Automatic Garbage Collection Working: 
 	- Automatic GC is the process of identifying (marking) the unreachable objects and destroying(sweep) them with compaction.
 	- Issue with this approach is, as the number of objects increase GC(mark and sweep) time increases
-	
+	- For improving the performance Generational GC methodology was introduced.
+		- Heap is divided into generations like Young Generation, Old Generation and Permanent Generation
