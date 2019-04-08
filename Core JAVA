@@ -551,5 +551,13 @@ Configuring Logging in Spring Boot App
 			- %m : Message supplied for logging
 			- %n : Operating system line break
 	
-		
-		
+Garbage Collection
+	- Daemon thread that runs in the background
+	- It frees up heap memory by destroying the unreachable objects
+	- Unreachable objects are the one which are not referenced by any part of the program
+	- We can choose the Garbage Collection for our program by using JVM parameter
+
+Automatic Garbage Collection Working: 
+	- Automatic GC is the process of identifying (marking) the unreachable objects and destroying(sweep) them with compaction.
+	- Issue with this approach is, as the number of objects increase GC(mark and sweep) time increases
+	
