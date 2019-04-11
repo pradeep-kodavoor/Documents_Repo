@@ -43,6 +43,17 @@ Lambda Expression in JAVA 8
 
   - Return Type of Lambda Expression is a Functional interface. Most of the time java.lang.Runnable Interface.
   
+Method Reference: 
+	- Should be used where you receive an argument and pass it on.
+	- Can be used for function with 1 parameter or 2 parameters
+	- Should not be used where we need to perform some operations with the arguments.
+	- Cannot be used if there is a conflict between static method and instance method. Throws an error if there is an ambiguity
+
+Stream 
+	- An abstraction : Stream is not a physical object with data. It is a bunch of functions
+	- Non-mutating pipeline : You have function composition as pipeline of transformation. As data flows through the transformation
+	data gets tranformed from one state to other. But data is mutated.
+	
 Reasons of Java 8 Release
   - Functional Programming
     + Main theme of Java 8 is support for functional programming
