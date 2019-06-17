@@ -41,3 +41,11 @@ Resolution: Delete the particular jar that was corrupted, Repeat the process til
 
 URL Reference
 https://stackoverflow.com/questions/32090921/deploying-maven-project-throws-java-util-zip-zipexception-invalid-loc-header-b
+
+Issue while starting the tomcat Server: java.lang.NoClassDefFoundError: javax/xml/bind/ValidationException in JDK 12
+
+jaxb-api excluded from classpath since JDK 9, Hence externally it has to be declared
+
+URL Reference: https://www.concretepage.com/questions/556
+
+
