@@ -1,6 +1,24 @@
 Algorithms - Steps to be performed for accomplishing a particular task.
 Real time example: Steps involved in Preparing Tea.
 
+1. Boil Water
+2. Add a teabag to a cup
+3. Pour the boiling water into the cup
+4. Remove the teabag when tea is ready
+5. Add the desire amount of milk to the cup
+6. Add the desire amount of sugar to the cup
+7. Stir the contents of the cup with a spoon
+
+There can be many different ways of preparing tea, but this is one of them.
+Similarly there can be many algorithms that accomplish the same task.
+There can be many implementations of the same algorithm
+
+Algorithm is not an implementation
+Algorithm describes the steps that are performed
+Implementation is the code that is written to perform the algorithm.
+
+Ex. with respect to Preparing tea
+
 Need for Big O Notation:
 
 Same implementation can take different time when it is run on Super Computer and Normal Computer.
