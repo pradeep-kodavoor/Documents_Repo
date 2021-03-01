@@ -39,7 +39,7 @@ O(n^2) - Quadratic - As the number of elements increase, performance becomes ver
 O(c^n) - Exponential - Recusrive calls over n and loop over c in it.
 O(n!) - Factorial - Looping over n and recursive call in the loop for (n-1) elements
 
-![alt text](https://en.wikipedia.org/wiki/Big_O_notation#/media/File:Comparison_computational_complexity.svg)
+![alt text](https://github.com/pradeep-kodavoor/Documents_Repo/blob/master/Images/Comparison_computational_complexity.svg.png?raw=true)
 
 Sort Algorithms:
 
