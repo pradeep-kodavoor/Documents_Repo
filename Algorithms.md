@@ -31,15 +31,17 @@ Describes the complexity of the data structure
 Tells us how well an algorithm scales as the input increases.
 Worst case is used to determine the time complexity of the algorithm.
 
-O(1) - Constant time - No matter how many elements u have in your data structures, Algorithm always perform same number of operations
-O(logn)(base 2) - Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
-O(n) - Linear - Descreases the performance as the elements decreases. Ex: For Loop, While Loop
-O(nlogn)(base 2) - n log-star-n Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
-O(n^2) - Quadratic - As the number of elements increase, performance becomes very very low. Ex: Loop within loop
-O(c^n) - Exponential - Recusrive calls over n and loop over c in it.
-O(n!) - Factorial - Looping over n and recursive call in the loop for (n-1) elements
+- O(1) - Constant time - No matter how many elements u have in your data structures, Algorithm always perform same number of operations
+- O(logn)(base 2) - Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
+- O(n) - Linear - Descreases the performance as the elements decreases. Ex: For Loop, While Loop
+- O(nlogn)(base 2) - n log-star-n Logarithamic - Slows rises as the number of elements increases Ex: Binary Search
+- O(n^2) - Quadratic - As the number of elements increase, performance becomes very very low. Ex: Loop within loop
+- O(c^n) - Exponential - Recusrive calls over n and loop over c in it.
+- O(n!) - Factorial - Looping over n and recursive call in the loop for (n-1) elements
 
-![alt text](https://github.com/pradeep-kodavoor/Documents_Repo/blob/master/Images/Comparison_computational_complexity.svg.png?raw=true)
+<p align="center">
+    <img src="img/Comparison_computational_complexity.svg" height="330px" alt=Comparison_computational_complexity" title="Comparison_computational_complexity" />
+</p>
 
 Sort Algorithms:
 
